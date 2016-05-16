@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FactoryMethodPattern
+namespace FactoryMethod
 {
     /// <summary>
     /// Product
     /// </summary>
-    abstract class Weapon {
-        public string Description { get; set; }
-    }
+    abstract class Weapon { }
 
     /// <summary>
     /// ConcreteProduct
