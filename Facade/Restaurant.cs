@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace Facade
 {
-    class SellableItem { public int DishID; }
-    class HotEntree : SellableItem { }
-    class ColdApp : SellableItem { }
-    class Drink : SellableItem { }
+    class FoodItem { public int DishID; }
+
+    interface KitchenSection
+    {
+        FoodItem PrepDish(int DishID);
+    }
 
     class Order
     {
-        public ColdApp Appetizer { get; set; }
-        public HotEntree Entree { get; set; }
-        public Drink Drink { get; set; }
+        public FoodItem Appetizer { get; set; }
+        public FoodItem Entree { get; set; }
+        public FoodItem Drink { get; set; }
     }
 
     /// <summary>
@@ -25,13 +27,11 @@ namespace Facade
     {
         private string _name;
 
-        // Constructor
         public Patron(string name)
         {
             this._name = name;
         }
 
-        // Gets the name
         public string Name
         {
             get { return _name; }
@@ -40,14 +40,14 @@ namespace Facade
 
 
     /// <summary>
-    /// The 'Subsystem ClassA' class
+    /// A subsystem class
     /// </summary>
-    class ColdPrep
+    class ColdPrep : KitchenSection
     {
-        public ColdApp GetColdApp(int dishID)
+        public FoodItem PrepDish(int dishID)
         {
             //Go prep the appetizer
-            return new ColdApp()
+            return new FoodItem()
             {
                 DishID = dishID
             };
@@ -55,14 +55,14 @@ namespace Facade
     }
 
     /// <summary>
-    /// The 'Subsystem ClassB' class
+    /// A subsystem class
     /// </summary>
-    class HotPrep
+    class HotPrep : KitchenSection
     {
-        public HotEntree GetHotEntree(int dishID)
+        public FoodItem PrepDish(int dishID)
         {
             //Go prep the entree
-            return new HotEntree()
+            return new FoodItem()
             {
                 DishID = dishID
             };
@@ -70,14 +70,14 @@ namespace Facade
     }
 
     /// <summary>
-    /// The 'Subsystem ClassC' class
+    /// A subsystem class
     /// </summary>
-    class Bar
+    class Bar : KitchenSection
     {
-        public Drink GetDrink(int dishID)
+        public FoodItem PrepDish(int dishID)
         {
             //Go mix the drink
-            return new Drink()
+            return new FoodItem()
             {
                 DishID = dishID
             };
@@ -85,7 +85,7 @@ namespace Facade
     }
 
     /// <summary>
-    /// The 'Facade' class
+    /// The Facade class
     /// </summary>
     class Server
     {
@@ -101,9 +101,9 @@ namespace Facade
 
             Order order = new Order();
 
-            order.Appetizer = _coldPrep.GetColdApp(coldAppID);
-            order.Entree = _hotPrep.GetHotEntree(hotEntreeID);
-            order.Drink = _bar.GetDrink(drinkID);
+            order.Appetizer = _coldPrep.PrepDish(coldAppID);
+            order.Entree = _hotPrep.PrepDish(hotEntreeID);
+            order.Drink = _bar.PrepDish(drinkID);
 
             return order;
         }
