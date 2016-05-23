@@ -9,12 +9,12 @@ namespace FactoryMethod
     /// <summary>
     /// Product
     /// </summary>
-    abstract class Weapon { }
+    abstract class Ingredient { }
 
     /// <summary>
     /// ConcreteProduct
     /// </summary>
-    class LaserCannon : Weapon
+    class Bread : Ingredient
     {
 
     }
@@ -22,7 +22,7 @@ namespace FactoryMethod
     /// <summary>
     /// ConcreteProduct
     /// </summary>
-    class ProtonTorpedoLauncher : Weapon
+    class Turkey : Ingredient
     {
 
     }
@@ -30,7 +30,7 @@ namespace FactoryMethod
     /// <summary>
     /// ConcreteProduct
     /// </summary>
-    class IonCannon : Weapon
+    class Lettuce : Ingredient
     {
 
     }
@@ -38,7 +38,7 @@ namespace FactoryMethod
     /// <summary>
     /// ConcreteProduct
     /// </summary>
-    class ConcussionMissile : Weapon
+    class Mayonnaise : Ingredient
     {
 
     }
@@ -47,67 +47,59 @@ namespace FactoryMethod
     /// <summary>
     /// Creator
     /// </summary>
-    abstract class Starfighter
+    abstract class Recipe
     {
-        private List<Weapon> _weapons = new List<Weapon>();
+        private List<Ingredient> _ingredients = new List<Ingredient>();
 
-        public Starfighter()
+        public Recipe()
         {
-            CreateWeapons();
+            CreateIngredients();
         }
 
         //Factory method
-        public abstract void CreateWeapons();
+        public abstract void CreateIngredients();
 
-        public List<Weapon> Weapons
+        public List<Ingredient> Ingredients
         {
-            get { return _weapons; }
+            get { return _ingredients; }
         }
     }
 
     /// <summary>
     /// ConcreteCreator
     /// </summary>
-    class XWing : Starfighter
+    class TurkeySandwich : Recipe
     {
-        public override void CreateWeapons()
+        public override void CreateIngredients()
         {
-            Weapons.Add(new LaserCannon());
-            Weapons.Add(new LaserCannon());
-            Weapons.Add(new LaserCannon());
-            Weapons.Add(new LaserCannon());
-            Weapons.Add(new ProtonTorpedoLauncher());
-            Weapons.Add(new ProtonTorpedoLauncher());
+            Ingredients.Add(new Bread());
+            Ingredients.Add(new Turkey());
+            Ingredients.Add(new Turkey());
+            Ingredients.Add(new Mayonnaise());
+            Ingredients.Add(new Bread());
         }
     }
 
     /// <summary>
     /// ConcreteCreator
     /// </summary>
-    class YWing : Starfighter
+    class Dagwood : Recipe
     {
-        public override void CreateWeapons()
+        public override void CreateIngredients()
         {
-            Weapons.Add(new LaserCannon());
-            Weapons.Add(new LaserCannon());
-            Weapons.Add(new ProtonTorpedoLauncher());
-            Weapons.Add(new ProtonTorpedoLauncher());
-            Weapons.Add(new IonCannon());
-            Weapons.Add(new IonCannon());
-        }
-    }
-
-    /// <summary>
-    /// ConcreteCreator
-    /// </summary>
-    class AWing : Starfighter
-    {
-        public override void CreateWeapons()
-        {
-            Weapons.Add(new LaserCannon());
-            Weapons.Add(new LaserCannon());
-            Weapons.Add(new ConcussionMissile());
-            Weapons.Add(new ConcussionMissile());
+            Ingredients.Add(new Bread());
+            Ingredients.Add(new Turkey());
+            Ingredients.Add(new Turkey());
+            Ingredients.Add(new Lettuce());
+            Ingredients.Add(new Lettuce());
+            Ingredients.Add(new Mayonnaise());
+            Ingredients.Add(new Bread());
+            Ingredients.Add(new Turkey());
+            Ingredients.Add(new Turkey());
+            Ingredients.Add(new Lettuce());
+            Ingredients.Add(new Lettuce());
+            Ingredients.Add(new Mayonnaise());
+            Ingredients.Add(new Bread());
         }
     }
 }

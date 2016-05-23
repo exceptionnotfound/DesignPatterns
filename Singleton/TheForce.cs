@@ -9,11 +9,11 @@ namespace Singleton
     /// <summary>
     /// Singleton
     /// </summary>
-    public sealed class TheForce
+    public sealed class TheBell
     {
-        private static TheForce forceConnection;
+        private static TheBell bellConnection;
         private static object syncRoot = new Object();
-        private TheForce()
+        private TheBell()
         {
 
         }
@@ -21,25 +21,25 @@ namespace Singleton
         /// <summary>
         /// We implement this method to ensure thread safety for our singleton.
         /// </summary>
-        public static TheForce Instance
+        public static TheBell Instance
         {
             get
             {
                 lock(syncRoot)
                 {
-                    if(forceConnection == null)
+                    if(bellConnection == null)
                     {
-                        forceConnection = new TheForce();
+                        bellConnection = new TheBell();
                     }
                 }
 
-                return forceConnection;
+                return bellConnection;
             }
         }
 
-        public void DisplayConnection()
+        public void Ring()
         {
-            Console.WriteLine("Use the Force, Luke!");
+            Console.WriteLine("Ding! Order up!");
         }
     }
 }

@@ -10,17 +10,16 @@ namespace FactoryMethod
     {
         static void Main(string[] args)
         {
-            List<Starfighter> fighters = new List<Starfighter>();
-            fighters.Add(new XWing());
-            fighters.Add(new YWing());
-            fighters.Add(new AWing());
+            List<Recipe> sandwiches = new List<Recipe>();
+            sandwiches.Add(new TurkeySandwich());
+            sandwiches.Add(new Dagwood());
 
-            foreach(var starfighter in fighters)
+            foreach(var sandwich in sandwiches)
             {
-                Console.WriteLine("Craft: " + starfighter.GetType().Name + " ");
-                foreach(var weapon in starfighter.Weapons)
+                Console.WriteLine("\nSandwich: " + sandwich.GetType().Name + " ");
+                foreach(var weapon in sandwich.Ingredients)
                 {
-                    Console.WriteLine("Weapon: " + weapon.GetType().Name);
+                    Console.WriteLine("Ingredient: " + weapon.GetType().Name);
                 }
             }
 

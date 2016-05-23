@@ -10,8 +10,8 @@ namespace Singleton
     {
         static void Main(string[] args)
         {
-            var theForce = TheForce.Instance;
-            theForce.DisplayConnection();
+            var bell = TheBell.Instance;
+            bell.Ring();
 
             Console.ReadKey();
         }

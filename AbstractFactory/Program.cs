@@ -10,17 +10,17 @@ namespace AbstractFactory
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Who are you? (R)ebellion or (E)mpire?");
+            Console.WriteLine("Who are you? (A)dult or (C)hild?");
             char input = Console.ReadKey().KeyChar;
-            StarshipFactory factory;
+            RecipeFactory factory;
             switch(input)
             {
-                case 'E':
-                    factory = new EmpireFactory();
+                case 'A':
+                    factory = new AdultCuisineFactory();
                     break;
 
-                case 'R':
-                    factory = new RebellionFactory();
+                case 'C':
+                    factory = new KidCuisineFactory();
                     break;
 
                 default:
@@ -28,11 +28,11 @@ namespace AbstractFactory
 
             }
 
-            var fighter = factory.CreateStarfighter();
-            var capitalShip = factory.CreateCapitalShip();
+            var sandwich = factory.CreateSandwich();
+            var dessert = factory.CreateDessert();
 
-            Console.WriteLine("\nFighter: " + fighter.GetType().Name);
-            Console.WriteLine("Capital Ship: " + capitalShip.GetType().Name);
+            Console.WriteLine("\nSandwich: " + sandwich.GetType().Name);
+            Console.WriteLine("Dessert: " + dessert.GetType().Name);
 
             Console.ReadKey();
         }

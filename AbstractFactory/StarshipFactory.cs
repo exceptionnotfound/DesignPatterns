@@ -6,50 +6,50 @@ using System.Threading.Tasks;
 
 namespace AbstractFactory
 {
-    abstract class Starfighter { }
+    abstract class Sandwich { }
 
-    abstract class CapitalShip { }
+    abstract class Roast { }
 
-    abstract class SuperWeapon { }
+    abstract class Dessert { }
 
-    abstract class StarshipFactory
+    abstract class RecipeFactory
     {
-        public abstract Starfighter CreateStarfighter();
-        public abstract CapitalShip CreateCapitalShip();
+        public abstract Sandwich CreateSandwich();
+        public abstract Dessert CreateDessert();
     }
 
-    class TIEFighter : Starfighter { }
+    class BLT : Sandwich { }
 
-    class StarDestroyer : CapitalShip { }
+    class CremeBrulee : Dessert { }
 
 
-    class EmpireFactory : StarshipFactory
+    class AdultCuisineFactory : RecipeFactory
     {
-        public override Starfighter CreateStarfighter()
+        public override Sandwich CreateSandwich()
         {
-            return new TIEFighter();
+            return new BLT();
         }
 
-        public override CapitalShip CreateCapitalShip()
+        public override Dessert CreateDessert()
         {
-            return new StarDestroyer();
+            return new CremeBrulee();
         }
     }
 
-    class XWing : Starfighter { }
+    class GrilledCheese : Sandwich { }
 
-    class MonCalamariCruiser : CapitalShip { }
+    class IceCreamSundae : Dessert { }
 
-    class RebellionFactory : StarshipFactory
+    class KidCuisineFactory : RecipeFactory
     {
-        public override Starfighter CreateStarfighter()
+        public override Sandwich CreateSandwich()
         {
-            return new XWing();
+            return new GrilledCheese();
         }
 
-        public override CapitalShip CreateCapitalShip()
+        public override Dessert CreateDessert()
         {
-            return new MonCalamariCruiser();
+            return new IceCreamSundae();
         }
     }
 }
