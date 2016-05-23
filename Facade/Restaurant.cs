@@ -6,13 +6,22 @@ using System.Threading.Tasks;
 
 namespace Facade
 {
+    /// <summary>
+    /// All items sold in the restaurant must inherit from this.
+    /// </summary>
     class FoodItem { public int DishID; }
 
+    /// <summary>
+    /// Each section of the kitchen must implement this interface.
+    /// </summary>
     interface KitchenSection
     {
         FoodItem PrepDish(int DishID);
     }
 
+    /// <summary>
+    /// Orders placed by Patrons.
+    /// </summary>
     class Order
     {
         public FoodItem Appetizer { get; set; }
@@ -40,7 +49,7 @@ namespace Facade
 
 
     /// <summary>
-    /// A subsystem class
+    /// A division of the kitchen.
     /// </summary>
     class ColdPrep : KitchenSection
     {
@@ -55,7 +64,7 @@ namespace Facade
     }
 
     /// <summary>
-    /// A subsystem class
+    /// A division of the kitchen.
     /// </summary>
     class HotPrep : KitchenSection
     {
@@ -70,7 +79,7 @@ namespace Facade
     }
 
     /// <summary>
-    /// A subsystem class
+    /// A division of the kitchen.
     /// </summary>
     class Bar : KitchenSection
     {
@@ -85,7 +94,8 @@ namespace Facade
     }
 
     /// <summary>
-    /// The Facade class
+    /// The actual "Facade" class, which hides the complexity of the KitchenSection classes.
+    /// After all, there's no reason a patron should order each part of their meal individually.
     /// </summary>
     class Server
     {

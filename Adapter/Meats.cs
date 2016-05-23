@@ -12,11 +12,10 @@ namespace Adapter
         Celsius
     }
     /// <summary>
-    /// The 'Adaptee' class
+    /// The legacy API which must be converted to the new structure
     /// </summary>
     class MeatDatabase
     {
-        // The (pretend) legacy API
         // Temps from http://www.foodsafety.gov/keep/charts/mintemp.html
         public float GetSafeCookTemp(string meat, TemperatureType tempType)
         {
@@ -81,7 +80,7 @@ namespace Adapter
     }
 
     /// <summary>
-    /// The 'Target' class
+    /// The new Meat class, which represents details about a particular kind of meat.
     /// </summary>
     class Meat
     {
@@ -104,7 +103,7 @@ namespace Adapter
     }
 
     /// <summary>
-    /// The 'Adapter' class
+    /// The Adapter class, which wraps the Meat class and initializes that class's values.
     /// </summary>
     class MeatDetails : Meat
     {
