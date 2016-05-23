@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Singleton", "Singleton\Sing
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prototype", "Prototype\Prototype.csproj", "{BFD7D1E0-10D2-4158-87A3-0E5A58B98278}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Builder", "Builder\Builder.csproj", "{ECD40C19-C21B-453B-A57C-22BC884F12CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{BFD7D1E0-10D2-4158-87A3-0E5A58B98278}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFD7D1E0-10D2-4158-87A3-0E5A58B98278}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFD7D1E0-10D2-4158-87A3-0E5A58B98278}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECD40C19-C21B-453B-A57C-22BC884F12CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECD40C19-C21B-453B-A57C-22BC884F12CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECD40C19-C21B-453B-A57C-22BC884F12CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECD40C19-C21B-453B-A57C-22BC884F12CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
