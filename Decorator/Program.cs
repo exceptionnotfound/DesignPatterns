@@ -22,7 +22,7 @@ namespace Decorator
             Pasta fettuccineAlfredo = new Pasta("Fresh-made daily pasta", "Creamly garlic alfredo sauce", 4);
             fettuccineAlfredo.Display();
 
-            Console.WriteLine("\nMaking these dishes orderable.");
+            Console.WriteLine("\nMaking these dishes available.");
 
             Available caesarAvailable = new Available(caesarSalad);
             Available alfredoAvailable = new Available(fettuccineAlfredo);
