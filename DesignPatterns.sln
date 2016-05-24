@@ -27,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bridge", "Bridge\Bridge.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Composite", "Composite\Composite.csproj", "{3BCA8A82-0242-434C-9299-C6CD5D49F301}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iterator", "Iterator\Iterator.csproj", "{0B9618CC-8F2A-48BE-B3D7-352537CC53D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainOfResponsibility", "ChainOfResponsibility\ChainOfResponsibility.csproj", "{E3356AE6-5B85-4163-B647-EFD7DC544FFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +85,14 @@ Global
 		{3BCA8A82-0242-434C-9299-C6CD5D49F301}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BCA8A82-0242-434C-9299-C6CD5D49F301}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BCA8A82-0242-434C-9299-C6CD5D49F301}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B9618CC-8F2A-48BE-B3D7-352537CC53D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B9618CC-8F2A-48BE-B3D7-352537CC53D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B9618CC-8F2A-48BE-B3D7-352537CC53D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B9618CC-8F2A-48BE-B3D7-352537CC53D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3356AE6-5B85-4163-B647-EFD7DC544FFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3356AE6-5B85-4163-B647-EFD7DC544FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3356AE6-5B85-4163-B647-EFD7DC544FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3356AE6-5B85-4163-B647-EFD7DC544FFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
