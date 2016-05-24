@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decorator", "Decorator\Deco
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flyweight", "Flyweight\Flyweight.csproj", "{9719E34D-9233-47A0-B655-399DA51A2042}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bridge", "Bridge\Bridge.csproj", "{08ED1B4B-711C-4500-A380-F9454288E691}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{9719E34D-9233-47A0-B655-399DA51A2042}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9719E34D-9233-47A0-B655-399DA51A2042}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9719E34D-9233-47A0-B655-399DA51A2042}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08ED1B4B-711C-4500-A380-F9454288E691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08ED1B4B-711C-4500-A380-F9454288E691}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08ED1B4B-711C-4500-A380-F9454288E691}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08ED1B4B-711C-4500-A380-F9454288E691}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
