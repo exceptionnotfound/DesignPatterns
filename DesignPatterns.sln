@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Command", "Command\Command.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "State", "State\State.csproj", "{4DFB974C-29C5-471A-A6E1-2DAF17203A8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateMethod", "TemplateMethod\TemplateMethod.csproj", "{E7AA4325-5787-44B9-9CED-2F5275D5543C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +137,10 @@ Global
 		{4DFB974C-29C5-471A-A6E1-2DAF17203A8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DFB974C-29C5-471A-A6E1-2DAF17203A8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DFB974C-29C5-471A-A6E1-2DAF17203A8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7AA4325-5787-44B9-9CED-2F5275D5543C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7AA4325-5787-44B9-9CED-2F5275D5543C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7AA4325-5787-44B9-9CED-2F5275D5543C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7AA4325-5787-44B9-9CED-2F5275D5543C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

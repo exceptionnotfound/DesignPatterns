@@ -42,8 +42,8 @@ namespace State
     {
         public Uncooked(Doneness state)
         {
-            this.currentTemp = state.CurrentTemp;
-            this.steak = state.Steak;
+            currentTemp = state.CurrentTemp;
+            steak = state.Steak;
             Initialize();
         }
 
@@ -301,8 +301,8 @@ namespace State
         {
             _state.AddTemp(amount);
             Console.WriteLine("Increased temperature by {0} degrees.", amount);
-            Console.WriteLine(" Current temp is {0}", this.CurrentTemp);
-            Console.WriteLine(" Status is {0}", this.State.GetType().Name);
+            Console.WriteLine(" Current temp is {0}", CurrentTemp);
+            Console.WriteLine(" Status is {0}", State.GetType().Name);
             Console.WriteLine("");
         }
 
@@ -310,8 +310,8 @@ namespace State
         {
             _state.RemoveTemp(amount);
             Console.WriteLine("Decreased temperature by {0} degrees.", amount);
-            Console.WriteLine(" Current temp is {0}", this.CurrentTemp);
-            Console.WriteLine(" Status is {0}", this.State.GetType().Name);
+            Console.WriteLine(" Current temp is {0}", CurrentTemp);
+            Console.WriteLine(" Status is {0}", State.GetType().Name);
             Console.WriteLine("");
         }
     }
