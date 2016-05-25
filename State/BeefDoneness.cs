@@ -31,6 +31,7 @@ namespace State
 
         public abstract void AddTemp(double temp);
         public abstract void RemoveTemp(double temp);
+        public abstract void DonenessCheck();
     }
 
 
@@ -65,7 +66,7 @@ namespace State
             DonenessCheck();
         }
 
-        private void DonenessCheck()
+        public override void DonenessCheck()
         {
             if (currentTemp > upperTemp)
             {
@@ -100,16 +101,16 @@ namespace State
         public override void AddTemp(double amount)
         {
             currentTemp += amount;
-            StateChangeCheck();
+            DonenessCheck();
         }
 
         public override void RemoveTemp(double amount)
         {
             currentTemp -= amount;
-            StateChangeCheck();
+            DonenessCheck();
         }
 
-        private void StateChangeCheck()
+        public override void DonenessCheck()
         {
             if (currentTemp < lowerTemp)
             {
@@ -147,16 +148,16 @@ namespace State
         public override void AddTemp(double amount)
         {
             currentTemp += amount;
-            StateChangeCheck();
+            DonenessCheck();
         }
 
         public override void RemoveTemp(double amount)
         {
             currentTemp -= amount;
-            StateChangeCheck();
+            DonenessCheck();
         }
 
-        private void StateChangeCheck()
+        public override void DonenessCheck()
         {
             if (currentTemp < 0.0)
             {
@@ -198,16 +199,16 @@ namespace State
         public override void AddTemp(double amount)
         {
             currentTemp += amount;
-            StateChangeCheck();
+            DonenessCheck();
         }
 
         public override void RemoveTemp(double amount)
         {
             currentTemp -= amount;
-            StateChangeCheck();
+            DonenessCheck();
         }
 
-        private void StateChangeCheck()
+        public override void DonenessCheck()
         {
             if (currentTemp < 130)
             {
@@ -249,16 +250,16 @@ namespace State
         public override void AddTemp(double amount)
         {
             currentTemp += amount;
-            StateChangeCheck();
+            DonenessCheck();
         }
 
         public override void RemoveTemp(double amount)
         {
             currentTemp -= amount;
-            StateChangeCheck();
+            DonenessCheck();
         }
 
-        private void StateChangeCheck()
+        public override void DonenessCheck()
         {
             if (currentTemp < 0)
             {
@@ -308,7 +309,7 @@ namespace State
         public void RemoveTemp(double amount)
         {
             _state.RemoveTemp(amount);
-            Console.WriteLine("Decreasd temperature by {0} degrees.", amount);
+            Console.WriteLine("Decreased temperature by {0} degrees.", amount);
             Console.WriteLine(" Current temp is {0}", this.CurrentTemp);
             Console.WriteLine(" Status is {0}", this.State.GetType().Name);
             Console.WriteLine("");
