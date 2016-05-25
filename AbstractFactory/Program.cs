@@ -8,6 +8,12 @@ namespace AbstractFactory
 {
     class Program
     {
+        /// <summary>
+        /// The Abstract Factory pattern provides an interface for creating related families of objects
+        /// without needing to specify the concrete implementations.  This pattern is critical for ideas
+        /// like Dependency Injection.
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             Console.WriteLine("Who are you? (A)dult or (C)hild?");
