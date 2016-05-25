@@ -13,8 +13,6 @@ namespace State
     {
         protected Steak steak;
         protected double currentTemp;
-        
-
         protected double lowerTemp;
         protected double upperTemp;
         protected bool canEat;
@@ -41,8 +39,6 @@ namespace State
     /// </summary>
     class Uncooked : Doneness
     {
-        
-
         public Uncooked(Doneness state)
         {
             this.currentTemp = state.CurrentTemp;
@@ -83,8 +79,6 @@ namespace State
     /// </summary>
     class Rare : Doneness
     {
-        // Overloaded constructors
-
         public Rare(Doneness state) : this(state.CurrentTemp, state.Steak)
         {
         }
@@ -278,21 +272,19 @@ namespace State
     }
 
     /// <summary>
-    /// The 'Context' class
+    /// The Context class
     /// </summary>
     class Steak
     {
         private Doneness _state;
         private string _cook;
 
-        // Constructor
         public Steak(string cook)
         {
             _cook = cook;
             _state = new Rare(0.0, this);
         }
 
-        // Properties
         public double CurrentTemp
         {
             get { return _state.CurrentTemp; }
