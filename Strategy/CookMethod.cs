@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Strategy
 {
     /// <summary>
-    /// The Strategy abstract class
+    /// The Strategy abstract class, which defines an interface common to all supported strategy algorithms.
     /// </summary>
     abstract class CookStrategy
     {
@@ -15,7 +15,7 @@ namespace Strategy
     }
 
     /// <summary>
-    /// A ConcreteStrategy class
+    /// A Concrete Strategy class
     /// </summary>
     class Grilling : CookStrategy
     {
@@ -26,7 +26,7 @@ namespace Strategy
     }
 
     /// <summary>
-    /// A ConcreteStrategy class
+    /// A Concrete Strategy class
     /// </summary>
     class OvenBaking : CookStrategy
     {
@@ -37,7 +37,7 @@ namespace Strategy
     }
 
     /// <summary>
-    /// A ConcreteStrategy class
+    /// A Concrete Strategy class
     /// </summary>
     class DeepFrying : CookStrategy
     {
@@ -48,7 +48,7 @@ namespace Strategy
     }
 
     /// <summary>
-    /// The Context class
+    /// The Context class, which maintains a reference to the chosen Strategy.
     /// </summary>
     class CookingMethod
     {
