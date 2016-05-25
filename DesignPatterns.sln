@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strategy", "Strategy\Strate
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Observer", "Observer\Observer.csproj", "{118BF8BC-5145-4BF6-81CD-C1B188515B9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mediator", "Mediator\Mediator.csproj", "{FE3E3012-8661-47B3-959A-9FC4EB7355CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{118BF8BC-5145-4BF6-81CD-C1B188515B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{118BF8BC-5145-4BF6-81CD-C1B188515B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{118BF8BC-5145-4BF6-81CD-C1B188515B9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE3E3012-8661-47B3-959A-9FC4EB7355CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE3E3012-8661-47B3-959A-9FC4EB7355CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE3E3012-8661-47B3-959A-9FC4EB7355CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE3E3012-8661-47B3-959A-9FC4EB7355CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
