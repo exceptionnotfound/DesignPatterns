@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace TemplateMethod
 {
     /// <summary>
-    /// The AbstractClass
+    /// The Abstract Class which contains the template method.
     /// </summary>
     abstract class Bread
     {
