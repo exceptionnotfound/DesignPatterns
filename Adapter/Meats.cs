@@ -84,21 +84,21 @@ namespace Adapter
     /// </summary>
     class Meat
     {
-        protected string _meatName;
-        protected float _safeCookTempFahrenheit;
-        protected float _safeCookTempCelsius;
-        protected double _caloriesPerOunce;
-        protected double _proteinPerOunce;
+        protected string MeatName;
+        protected float SafeCookTempFahrenheit;
+        protected float SafeCookTempCelsius;
+        protected double CaloriesPerOunce;
+        protected double ProteinPerOunce;
 
         // Constructor
         public Meat(string meat)
         {
-            this._meatName = meat;
+            this.MeatName = meat;
         }
 
-        public virtual void Display()
+        public virtual void LoadData()
         {
-            Console.WriteLine("\nMeat: {0} ------ ", _meatName);
+            Console.WriteLine("\nMeat: {0} ------ ", MeatName);
         }
     }
 
@@ -107,7 +107,7 @@ namespace Adapter
     /// </summary>
     class MeatDetails : Meat
     {
-        private MeatDatabase _bank;
+        private MeatDatabase _meatDatabase;
 
         // Constructor
         public MeatDetails(string name)
@@ -115,21 +115,21 @@ namespace Adapter
         {
         }
 
-        public override void Display()
+        public override void LoadData()
         {
             // The Adaptee
-            _bank = new MeatDatabase();
+            _meatDatabase = new MeatDatabase();
 
-            _safeCookTempFahrenheit = _bank.GetSafeCookTemp(_meatName, TemperatureType.Fahrenheit);
-            _safeCookTempCelsius = _bank.GetSafeCookTemp(_meatName, TemperatureType.Celsius);
-            _caloriesPerOunce = _bank.GetCaloriesPerOunce(_meatName);
-            _proteinPerOunce = _bank.GetProteinPerOunce(_meatName);
+            SafeCookTempFahrenheit = _meatDatabase.GetSafeCookTemp(MeatName, TemperatureType.Fahrenheit);
+            SafeCookTempCelsius = _meatDatabase.GetSafeCookTemp(MeatName, TemperatureType.Celsius);
+            CaloriesPerOunce = _meatDatabase.GetCaloriesPerOunce(MeatName);
+            ProteinPerOunce = _meatDatabase.GetProteinPerOunce(MeatName);
 
-            base.Display();
-            Console.WriteLine(" Safe Cook Temp (F): {0}", _safeCookTempFahrenheit);
-            Console.WriteLine(" Safe Cook Temp (C): {0}", _safeCookTempCelsius);
-            Console.WriteLine(" Calories per Ounce: {0}", _caloriesPerOunce);
-            Console.WriteLine(" Protein per Ounce: {0}", _proteinPerOunce);
+            base.LoadData();
+            Console.WriteLine(" Safe Cook Temp (F): {0}", SafeCookTempFahrenheit);
+            Console.WriteLine(" Safe Cook Temp (C): {0}", SafeCookTempCelsius);
+            Console.WriteLine(" Calories per Ounce: {0}", CaloriesPerOunce);
+            Console.WriteLine(" Protein per Ounce: {0}", ProteinPerOunce);
         }
     }
 }

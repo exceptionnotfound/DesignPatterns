@@ -10,25 +10,23 @@ namespace Flyweight
     {
         static void Main(string[] args)
         {
-            // Build a slider order using characters
-            Console.WriteLine("Please enter your order (use characters A, B, Z with no spaces):");
+            // Build a slider order using patron's input
+            Console.WriteLine("Please enter your slider order (use characters B, V, Q with no spaces):");
             var order = Console.ReadLine();
             char[] chars = order.ToCharArray();
 
             SliderFactory factory = new SliderFactory();
 
-            // extrinsic state
             int orderTotal = 0;
 
-            // For each character use a flyweight object
+            //Get the slider from the factory
             foreach (char c in chars)
             {
                 orderTotal++;
-                Slider character = factory.GetCharacter(c);
+                Slider character = factory.GetSlider(c);
                 character.Display(orderTotal);
             }
 
-            // Wait for user
             Console.ReadKey();
         }
     }

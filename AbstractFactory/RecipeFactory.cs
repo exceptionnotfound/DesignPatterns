@@ -14,11 +14,6 @@ namespace AbstractFactory
     /// <summary>
     /// An abstract object.
     /// </summary>
-    abstract class Roast { }
-
-    /// <summary>
-    /// An abstract object.
-    /// </summary>
     abstract class Dessert { }
 
     /// <summary>

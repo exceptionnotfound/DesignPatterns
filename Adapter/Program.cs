@@ -8,23 +8,23 @@ namespace Adapter
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            //Non-adapted
-            Meat unknown = new Meat("Beef");
-            unknown.Display();
+static void Main(string[] args)
+{
+    //Non-adapted
+    Meat unknown = new Meat("Beef");
+    unknown.LoadData();
 
-            //Adapted
-            MeatDetails beef = new MeatDetails("Beef");
-            beef.Display();
+    //Adapted
+    MeatDetails beef = new MeatDetails("Beef");
+    beef.LoadData();
 
-            MeatDetails turkey = new MeatDetails("Turkey");
-            turkey.Display();
+    MeatDetails turkey = new MeatDetails("Turkey");
+    turkey.LoadData();
 
-            MeatDetails chicken = new MeatDetails("Chicken");
-            chicken.Display();
+    MeatDetails chicken = new MeatDetails("Chicken");
+    chicken.LoadData();
 
-            Console.ReadKey();
-        }
+    Console.ReadKey();
+}
     }
 }

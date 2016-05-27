@@ -7,33 +7,31 @@ using System.Threading.Tasks;
 namespace Flyweight
 {
     /// <summary>
-    /// The 'FlyweightFactory' class
+    /// The Flyweight Factory class
     /// </summary>
     class SliderFactory
     {
-        private Dictionary<char, Slider> _characters =
-          new Dictionary<char, Slider>();
+        private Dictionary<char, Slider> _sliders =
+            new Dictionary<char, Slider>();
 
-        public Slider GetCharacter(char key)
+        public Slider GetSlider(char key)
         {
-            // Uses "lazy initialization"
-            Slider character = null;
-            if (_characters.ContainsKey(key))
+            Slider slider = null;
+            if (_sliders.ContainsKey(key)) //If we've already created an instance of the requested type of slider, just use that.
             {
-                character = _characters[key];
+                slider = _sliders[key];
             }
-            else
+            else //Otherwise, create a brand new slider instance.
             {
                 switch (key)
                 {
-                    case 'A': character = new BaconMaster(); break;
-                    case 'B': character = new VeggieSlider(); break;
-                    //...
-                    case 'Z': character = new BBQKing(); break;
+                    case 'B': slider = new BaconMaster(); break;
+                    case 'V': slider = new VeggieSlider(); break;
+                    case 'Q': slider = new BBQKing(); break;
                 }
-                _characters.Add(key, character);
+                _sliders.Add(key, slider);
             }
-            return character;
+            return slider;
         }
     }
 
@@ -51,11 +49,10 @@ namespace Flyweight
     }
 
     /// <summary>
-    /// A 'ConcreteFlyweight' class
+    /// A  Concrete Flyweight class
     /// </summary>
     class BaconMaster : Slider
     {
-        // Constructor
         public BaconMaster()
         {
             Name = "Bacon Master";
@@ -71,11 +68,10 @@ namespace Flyweight
     }
 
     /// <summary>
-    /// A 'ConcreteFlyweight' class
+    /// A Concrete Flyweight class
     /// </summary>
     class VeggieSlider : Slider
     {
-        // Constructor
         public VeggieSlider()
         {
             Name = "Veggie Slider";
@@ -91,14 +87,11 @@ namespace Flyweight
 
     }
 
-    // ... C, D, E, etc.
-
     /// <summary>
-    /// A 'ConcreteFlyweight' class
+    /// A Concrete Flyweight class
     /// </summary>
     class BBQKing : Slider
     {
-        // Constructor
         public BBQKing()
         {
             Name = "BBQ King";

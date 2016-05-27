@@ -10,7 +10,7 @@ namespace Proxy
     {
         static void Main(string[] args)
         {
-            ServerProxy proxy = new ServerProxy();
+            NewServerProxy proxy = new NewServerProxy();
 
             //Manage orders from a table
             Console.WriteLine("What would you like to order? ");

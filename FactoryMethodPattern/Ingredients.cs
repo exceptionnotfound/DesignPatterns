@@ -12,7 +12,7 @@ namespace FactoryMethod
     abstract class Ingredient { }
 
     /// <summary>
-    /// ConcreteProduct
+    /// Concrete Product
     /// </summary>
     class Bread : Ingredient
     {
@@ -20,7 +20,7 @@ namespace FactoryMethod
     }
 
     /// <summary>
-    /// ConcreteProduct
+    /// Concrete Product
     /// </summary>
     class Turkey : Ingredient
     {
@@ -28,7 +28,7 @@ namespace FactoryMethod
     }
 
     /// <summary>
-    /// ConcreteProduct
+    /// Concrete Product
     /// </summary>
     class Lettuce : Ingredient
     {
@@ -36,7 +36,7 @@ namespace FactoryMethod
     }
 
     /// <summary>
-    /// ConcreteProduct
+    /// Concrete Product
     /// </summary>
     class Mayonnaise : Ingredient
     {
@@ -47,11 +47,11 @@ namespace FactoryMethod
     /// <summary>
     /// Creator
     /// </summary>
-    abstract class Recipe
+    abstract class Sandwich
     {
         private List<Ingredient> _ingredients = new List<Ingredient>();
 
-        public Recipe()
+        public Sandwich()
         {
             CreateIngredients();
         }
@@ -65,41 +65,66 @@ namespace FactoryMethod
         }
     }
 
-    /// <summary>
-    /// ConcreteCreator
-    /// </summary>
-    class TurkeySandwich : Recipe
+/// <summary>
+/// Concrete Creator
+/// </summary>
+class TurkeySandwich : Sandwich
+{
+    public override void CreateIngredients()
     {
-        public override void CreateIngredients()
-        {
-            Ingredients.Add(new Bread());
-            Ingredients.Add(new Turkey());
-            Ingredients.Add(new Turkey());
-            Ingredients.Add(new Mayonnaise());
-            Ingredients.Add(new Bread());
-        }
+        Ingredients.Add(new Bread());
+        Ingredients.Add(new Mayonnaise());
+        Ingredients.Add(new Lettuce());
+        Ingredients.Add(new Turkey());
+        Ingredients.Add(new Turkey());
+        Ingredients.Add(new Bread());
     }
+}
 
-    /// <summary>
-    /// ConcreteCreator
-    /// </summary>
-    class Dagwood : Recipe
+/// <summary>
+/// Concrete Creator
+/// </summary>
+class Dagwood : Sandwich //OM NOM NOM
+{
+    public override void CreateIngredients()
     {
-        public override void CreateIngredients()
-        {
-            Ingredients.Add(new Bread());
-            Ingredients.Add(new Turkey());
-            Ingredients.Add(new Turkey());
-            Ingredients.Add(new Lettuce());
-            Ingredients.Add(new Lettuce());
-            Ingredients.Add(new Mayonnaise());
-            Ingredients.Add(new Bread());
-            Ingredients.Add(new Turkey());
-            Ingredients.Add(new Turkey());
-            Ingredients.Add(new Lettuce());
-            Ingredients.Add(new Lettuce());
-            Ingredients.Add(new Mayonnaise());
-            Ingredients.Add(new Bread());
-        }
+        Ingredients.Add(new Bread());
+        Ingredients.Add(new Turkey());
+        Ingredients.Add(new Turkey());
+        Ingredients.Add(new Lettuce());
+        Ingredients.Add(new Lettuce());
+        Ingredients.Add(new Mayonnaise());
+        Ingredients.Add(new Bread());
+        Ingredients.Add(new Turkey());
+        Ingredients.Add(new Turkey());
+        Ingredients.Add(new Lettuce());
+        Ingredients.Add(new Lettuce());
+        Ingredients.Add(new Mayonnaise());
+        Ingredients.Add(new Bread());
+        Ingredients.Add(new Turkey());
+        Ingredients.Add(new Turkey());
+        Ingredients.Add(new Lettuce());
+        Ingredients.Add(new Lettuce());
+        Ingredients.Add(new Mayonnaise());
+        Ingredients.Add(new Bread());
+        Ingredients.Add(new Turkey());
+        Ingredients.Add(new Turkey());
+        Ingredients.Add(new Lettuce());
+        Ingredients.Add(new Lettuce());
+        Ingredients.Add(new Mayonnaise());
+        Ingredients.Add(new Bread());
+        Ingredients.Add(new Turkey());
+        Ingredients.Add(new Turkey());
+        Ingredients.Add(new Lettuce());
+        Ingredients.Add(new Lettuce());
+        Ingredients.Add(new Mayonnaise());
+        Ingredients.Add(new Bread());
+        Ingredients.Add(new Turkey());
+        Ingredients.Add(new Turkey());
+        Ingredients.Add(new Lettuce());
+        Ingredients.Add(new Lettuce());
+        Ingredients.Add(new Mayonnaise());
+        Ingredients.Add(new Bread());
     }
+}
 }

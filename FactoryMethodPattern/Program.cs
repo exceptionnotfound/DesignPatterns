@@ -10,7 +10,7 @@ namespace FactoryMethod
     {
         static void Main(string[] args)
         {
-            List<Recipe> sandwiches = new List<Recipe>();
+            List<Sandwich> sandwiches = new List<Sandwich>();
             sandwiches.Add(new TurkeySandwich());
             sandwiches.Add(new Dagwood());
 
