@@ -11,20 +11,6 @@ namespace Decorator
     /// </summary>
     abstract class RestaurantDish
     {
-        private int _numAvailable { get; set; }
-
-        public int NumAvailable
-        {
-            get
-            {
-                return _numAvailable;
-            }
-            set
-            {
-                _numAvailable = value;
-            }
-        }
-
         public abstract void Display();
     }
 
@@ -37,20 +23,19 @@ namespace Decorator
         private string _cheese; //I am going to use this pun everywhere I can
         private string _dressing;
 
-        public FreshSalad(string greens, string cheese, string dressing, int numAvailable)
+        public FreshSalad(string greens, string cheese, string dressing)
         {
             _greens = greens;
             _cheese = cheese;
             _dressing = dressing;
-            NumAvailable = numAvailable;
         }
 
         public override void Display()
         {
             Console.WriteLine("\nFresh Salad:");
-            Console.WriteLine(" Greens: {0}" + _greens);
-            Console.WriteLine(" Cheese: {0}" + _cheese);
-            Console.WriteLine(" Dressing: {0}" + _dressing);
+            Console.WriteLine(" Greens: {0}", _greens);
+            Console.WriteLine(" Cheese: {0}", _cheese);
+            Console.WriteLine(" Dressing: {0}", _dressing);
         }
     }
 
@@ -62,18 +47,17 @@ namespace Decorator
         private string _pastaType;
         private string _sauce;
 
-        public Pasta(string pastaType, string sauce, int numAvailable)
+        public Pasta(string pastaType, string sauce)
         {
             _pastaType = pastaType;
             _sauce = sauce;
-            NumAvailable = numAvailable;
         }
 
         public override void Display()
         {
             Console.WriteLine("\nClassic Pasta:");
-            Console.WriteLine(" Pasta: {0}" + _pastaType);
-            Console.WriteLine(" Sauce: {0}" + _sauce);
+            Console.WriteLine(" Pasta: {0}", _pastaType);
+            Console.WriteLine(" Sauce: {0}", _sauce);
         }
     }
 
@@ -100,18 +84,19 @@ namespace Decorator
     /// </summary>
     class Available : Decorator
     {
-        protected List<string> customers = new List<string>();
-        public Available(RestaurantDish dish) : base(dish)
+        public int NumAvailable { get; set; } //How many can we make?
+            protected List<string> customers = new List<string>();
+        public Available(RestaurantDish dish, int numAvailable) : base(dish)
         {
-
+                NumAvailable = numAvailable;
         }
 
         public void OrderItem(string name)
         {
-            if (_dish.NumAvailable > 0)
+            if (NumAvailable > 0)
             {
                 customers.Add(name);
-                _dish.NumAvailable--;
+                NumAvailable--;
             }
             else
             {

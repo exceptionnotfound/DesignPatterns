@@ -10,14 +10,14 @@ namespace Composite
     {
         static void Main(string[] args)
         {
-            SodaFountain fountain = new SodaFountain();
-            fountain.Colas.AvailableFlavors.Add(new Cola(220));
+            SodaDispenser fountain = new SodaDispenser();
+            fountain.Colas.AvailableFlavors.Add(new OriginalCola(220));
             fountain.Colas.AvailableFlavors.Add(new CherryCola(230));
             fountain.LemonLime.Calories = 180;
-            fountain.RootBeers.AvailableFlavors.Add(new RootBeer(225));
+            fountain.RootBeers.AvailableFlavors.Add(new OriginalRootBeer(225));
             fountain.RootBeers.AvailableFlavors.Add(new VanillaRootBeer(225));
             fountain.DisplayCalories();
-            // Wait for user
+
             Console.ReadKey();
         }
     }

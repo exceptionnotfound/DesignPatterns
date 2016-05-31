@@ -15,24 +15,35 @@ namespace Command
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            FastFoodOrder order = new FastFoodOrder();
+            Patron patron = new Patron();
+            patron.SetCommand(1 /*Add*/);
+            patron.SetMenuItem(new MenuItem("French Fries", 2, 1.99));
+            patron.ExecuteCommand();
 
-            //Add some items
-            order.SubmitCommand(1 /*Add*/, new MenuItem("French Fries", 2, 1.99));
-            order.SubmitCommand(1 /*Add*/, new MenuItem("Hamburger", 2, 2.59));
-            order.SubmitCommand(1 /*Add*/, new MenuItem("Drink", 2, 1.19));
+            patron.SetCommand(1 /*Add*/);
+            patron.SetMenuItem(new MenuItem("Hamburger", 2, 2.59));
+            patron.ExecuteCommand();
 
-            order.ShowCurrentItems();
+            patron.SetCommand(1 /*Add*/);
+            patron.SetMenuItem(new MenuItem("Drink", 2, 1.19));
+            patron.ExecuteCommand();
+
+            patron.ShowCurrentOrder();
 
             //Remove the french fries
-            order.SubmitCommand(3 /*Remove*/, new MenuItem("French Fries", 2, 1.19));
+            patron.SetCommand(3 /*Add*/);
+            patron.SetMenuItem(new MenuItem("French Fries", 2, 1.99));
+            patron.ExecuteCommand();
 
-            order.ShowCurrentItems();
+            patron.ShowCurrentOrder();
 
             //Now we want 4 hamburgers rather than 2
-            order.SubmitCommand(2 /*Modify*/, new MenuItem("Hamburger", 4, 2.79));
+            patron.SetCommand(2 /*Add*/);
+            patron.SetMenuItem(new MenuItem("Hamburger", 4, 2.59));
+            patron.ExecuteCommand();
 
-            order.ShowCurrentItems();
+            patron.ShowCurrentOrder();
+
             Console.ReadKey();
         }
     }

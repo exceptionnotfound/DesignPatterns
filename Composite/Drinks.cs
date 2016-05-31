@@ -22,9 +22,9 @@ namespace Composite
     /// <summary>
     /// Leaf class
     /// </summary>
-    public class Cola : SoftDrink
+    public class OriginalCola : SoftDrink
     {
-        public Cola(int calories) : base(calories) { }
+        public OriginalCola(int calories) : base(calories) { }
     }
 
     /// <summary>
@@ -38,9 +38,9 @@ namespace Composite
     /// <summary>
     /// Leaf class
     /// </summary>
-    public class RootBeer : SoftDrink
+    public class OriginalRootBeer : SoftDrink
     {
-        public RootBeer(int calories) : base(calories) { }
+        public OriginalRootBeer(int calories) : base(calories) { }
     }
 
     /// <summary>
@@ -88,13 +88,13 @@ namespace Composite
     /// <summary>
     /// The Component class
     /// </summary>
-    public class SodaFountain
+    public class SodaDispenser
     {
         public Colas Colas { get; set; }
         public LemonLime LemonLime { get; set; }
         public RootBeers RootBeers { get; set; }
 
-        public SodaFountain()
+        public SodaDispenser()
         {
             Colas = new Colas();
             LemonLime = new LemonLime(190);
@@ -102,7 +102,7 @@ namespace Composite
         }
 
         /// <summary>
-        /// "Flatten" method, returns all billable codes
+        /// "Flatten" method, returns all available flavors
         /// </summary>
         public void DisplayCalories()
         {

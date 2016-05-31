@@ -25,16 +25,16 @@ namespace Bridge
         public abstract void Send();
     }
 
-/// <summary>
-/// Refined abstraction for a dairy-free order
-/// </summary>
-public class SendDairyFreeOrder : SendOrder
-{
-    public override void Send()
+    /// <summary>
+    /// Refined abstraction for a dairy-free order
+    /// </summary>
+    public class SendDairyFreeOrder : SendOrder
     {
-        _restaurant.Place("Dairy-Free Order");
+        public override void Send()
+        {
+            _restaurant.Place("Dairy-Free Order");
+        }
     }
-}
 
     /// <summary>
     /// Refined abstraction for a gluten free order

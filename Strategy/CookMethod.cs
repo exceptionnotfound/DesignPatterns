@@ -6,69 +6,69 @@ using System.Threading.Tasks;
 
 namespace Strategy
 {
-    /// <summary>
-    /// The Strategy abstract class, which defines an interface common to all supported strategy algorithms.
-    /// </summary>
-    abstract class CookStrategy
+/// <summary>
+/// The Strategy abstract class, which defines an interface common to all supported strategy algorithms.
+/// </summary>
+abstract class CookStrategy
+{
+    public abstract void Cook(string food);
+}
+
+/// <summary>
+/// A Concrete Strategy class
+/// </summary>
+class Grilling : CookStrategy
+{
+    public override void Cook(string food)
     {
-        public abstract void Cook(string food);
+        Console.WriteLine("\nCooking " + food + " by grilling it.");
+    }
+}
+
+/// <summary>
+/// A Concrete Strategy class
+/// </summary>
+class OvenBaking : CookStrategy
+{
+    public override void Cook(string food)
+    {
+        Console.WriteLine("\nCooking " + food + " by oven baking it.");
+    }
+}
+
+/// <summary>
+/// A Concrete Strategy class
+/// </summary>
+class DeepFrying : CookStrategy
+{
+    public override void Cook(string food)
+    {
+        Console.WriteLine("\nCooking " + food + " by deep frying it");
+    }
+}
+
+/// <summary>
+/// The Context class, which maintains a reference to the chosen Strategy.
+/// </summary>
+class CookingMethod
+{
+    private string Food;
+    private CookStrategy _sortstrategy;
+
+    public void SetCookStrategy(CookStrategy sortstrategy)
+    {
+        this._sortstrategy = sortstrategy;
     }
 
-    /// <summary>
-    /// A Concrete Strategy class
-    /// </summary>
-    class Grilling : CookStrategy
+    public void SetFood(string name)
     {
-        public override void Cook(string food)
-        {
-            Console.WriteLine("\nCooking " + food + " by grilling it.");
-        }
+        Food = name;
     }
 
-    /// <summary>
-    /// A Concrete Strategy class
-    /// </summary>
-    class OvenBaking : CookStrategy
+    public void Cook()
     {
-        public override void Cook(string food)
-        {
-            Console.WriteLine("\nCooking " + food + " by oven baking it.");
-        }
+        _sortstrategy.Cook(Food);
+        Console.WriteLine();
     }
-
-    /// <summary>
-    /// A Concrete Strategy class
-    /// </summary>
-    class DeepFrying : CookStrategy
-    {
-        public override void Cook(string food)
-        {
-            Console.WriteLine("\nCooking " + food + " by deep frying it");
-        }
-    }
-
-    /// <summary>
-    /// The Context class, which maintains a reference to the chosen Strategy.
-    /// </summary>
-    class CookingMethod
-    {
-        private string Food;
-        private CookStrategy _sortstrategy;
-
-        public void SetSortStrategy(CookStrategy sortstrategy)
-        {
-            this._sortstrategy = sortstrategy;
-        }
-
-        public void SetFood(string name)
-        {
-            Food = name;
-        }
-
-        public void Sort()
-        {
-            _sortstrategy.Cook(Food);
-            Console.WriteLine();
-        }
-    }
+}
 }

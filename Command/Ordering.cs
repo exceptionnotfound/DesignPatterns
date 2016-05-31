@@ -7,29 +7,55 @@ using System.Threading.Tasks;
 namespace Command
 {
 
-    /// <summary>
-    /// The Receiver abstract class
-    /// </summary>
-    public abstract class Order
+/// <summary>
+/// The Invoker class
+/// </summary>
+public class Patron
+{
+    private OrderCommand _orderCommand;
+    private MenuItem _menuItem;
+    private FastFoodOrder _order;
+
+    public Patron()
     {
-        List<MenuItem> items { get; set; }
+        _order = new FastFoodOrder();
     }
 
-    /// <summary>
-    /// The Invoker
-    /// </summary>
-    public class FastFoodOrder : Order
+    public void SetCommand(int commandOption)
     {
-        List<MenuItem> currentItems { get; set; }
+        _orderCommand = new CommandFactory().GetCommand(commandOption);
+    }
+
+    public void SetMenuItem(MenuItem item)
+    {
+        _menuItem = item;
+    }
+
+    public void ExecuteCommand()
+    {
+        _order.ExecuteCommand(_orderCommand, _menuItem);
+    }
+
+    public void ShowCurrentOrder()
+    {
+        _order.ShowCurrentItems();
+    }
+}
+
+    /// <summary>
+    /// The Receiver
+    /// </summary>
+    public class FastFoodOrder
+    {
+        public List<MenuItem> currentItems { get; set; }
         public FastFoodOrder()
         {
             currentItems = new List<MenuItem>();
         }
 
-        public void SubmitCommand(int commandOption, MenuItem item)
+        public void ExecuteCommand(OrderCommand command, MenuItem item)
         {
-            OrderCommand command = new CommandFactory().GetCommand(commandOption);
-            command.Execute(currentItems, item);
+            command.Execute(this.currentItems, item);
         }
 
         public void ShowCurrentItems()
@@ -72,7 +98,7 @@ namespace Command
     /// </summary>
     public abstract class OrderCommand
     {
-        public abstract List<MenuItem> Execute(List<MenuItem> currentItems, MenuItem newItem);
+        public abstract void Execute(List<MenuItem> order, MenuItem newItem);
     }
 
     /// <summary>
@@ -80,10 +106,9 @@ namespace Command
     /// </summary>
     public class AddCommand : OrderCommand
     {
-        public override List<MenuItem> Execute(List<MenuItem> currentItems, MenuItem newItem)
+        public override void Execute(List<MenuItem> currentItems, MenuItem newItem)
         {
             currentItems.Add(newItem);
-            return currentItems;
         }
     }
 
@@ -92,10 +117,9 @@ namespace Command
     /// </summary>
     public class RemoveCommand : OrderCommand
     {
-        public override List<MenuItem> Execute(List<MenuItem> currentItems, MenuItem newItem)
+        public override void Execute(List<MenuItem> currentItems, MenuItem newItem)
         {
             currentItems.Remove(currentItems.Where(x=>x.Name == newItem.Name).First());
-            return currentItems;
         }
     }
 
@@ -104,12 +128,11 @@ namespace Command
     /// </summary>
     public class ModifyCommand : OrderCommand
     {
-        public override List<MenuItem> Execute(List<MenuItem> currentItems, MenuItem newItem)
+        public override void Execute(List<MenuItem> currentItems, MenuItem newItem)
         {
             var item = currentItems.Where(x => x.Name == newItem.Name).First();
             item.Price = newItem.Price;
             item.Amount = newItem.Amount;
-            return currentItems;
         }
     }
 

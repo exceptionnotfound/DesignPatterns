@@ -31,7 +31,7 @@ namespace ChainOfResponsibility
             if (purchase.Price < 1000)
             {
                 Console.WriteLine("{0} approved purchase request #{1}",
-                  this.GetType().Name, purchase.RequestNumber);
+                    this.GetType().Name, purchase.RequestNumber);
             }
             else if (Supervisor != null)
             {
@@ -50,7 +50,7 @@ namespace ChainOfResponsibility
             if (purchase.Price < 2500)
             {
                 Console.WriteLine("{0} approved purchase request #{1}",
-                  this.GetType().Name, purchase.RequestNumber);
+                    this.GetType().Name, purchase.RequestNumber);
             }
             else if (Supervisor != null)
             {
@@ -69,13 +69,13 @@ namespace ChainOfResponsibility
             if (purchase.Price < 10000)
             {
                 Console.WriteLine("{0} approved purchase request #{1}",
-                  this.GetType().Name, purchase.RequestNumber);
+                    this.GetType().Name, purchase.RequestNumber);
             }
             else
             {
                 Console.WriteLine(
-                  "Purchase request #{0} requires an executive meeting!",
-                  purchase.RequestNumber);
+                    "Purchase request #{0} requires an executive meeting!",
+                    purchase.RequestNumber);
             }
         }
     }
