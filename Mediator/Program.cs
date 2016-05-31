@@ -14,23 +14,23 @@ namespace Mediator
         /// objects from referring to each other explicitly.
         /// </summary>
         /// <param name="args"></param>
-        static void Main(string[] args)
-        {
-            KitchenMediator mediator = new KitchenMediator();
+static void Main(string[] args)
+{
+    ConcessionsMediator mediator = new ConcessionsMediator();
 
-            LeftSideKitchen leftKitchen = new LeftSideKitchen(mediator);
-            RightSideKitchen rightKitchen = new RightSideKitchen(mediator);
+    NorthConcessionStand leftKitchen = new NorthConcessionStand(mediator);
+    SouthConcessionStand rightKitchen = new SouthConcessionStand(mediator);
 
-            mediator.LeftKitchen = leftKitchen;
-            mediator.RightKitchen = rightKitchen;
+    mediator.NorthConcessions = leftKitchen;
+    mediator.SouthConcessions = rightKitchen;
 
-            leftKitchen.Send("Can you send some popcorn?");
-            rightKitchen.Send("Sure thing, Kenny's on his way.");
+    leftKitchen.Send("Can you send some popcorn?");
+    rightKitchen.Send("Sure thing, Kenny's on his way.");
 
-            rightKitchen.Send("Do you have any extra hot dogs?  We've had a rush on them over here.");
-            leftKitchen.Send("Just a couple, we'll send Kenny back with them.");
+    rightKitchen.Send("Do you have any extra hot dogs?  We've had a rush on them over here.");
+    leftKitchen.Send("Just a couple, we'll send Kenny back with them.");
 
-            Console.ReadKey();
-        }
+    Console.ReadKey();
+}
     }
 }

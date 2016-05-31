@@ -13,24 +13,24 @@ namespace Memento
         /// restored to that state at a later time.  A good example of this is undo/redo operations.
         /// </summary>
         /// <param name="args"></param>
-        static void Main(string[] args)
-        {
-            //Here's a new supplier for our restaurant
-            FoodSupplier s = new FoodSupplier();
-            s.Name = "Harold Karstark";
-            s.Phone = "(482) 449-1172";
+static void Main(string[] args)
+{
+    //Here's a new supplier for our restaurant
+    FoodSupplier s = new FoodSupplier();
+    s.Name = "Harold Karstark";
+    s.Phone = "(482) 449-1172";
 
-            // Let's store that entry in our database.
-            ProspectMemory m = new ProspectMemory();
-            m.Memento = s.SaveMemento();
+    // Let's store that entry in our database.
+    SupplierMemory m = new SupplierMemory();
+    m.Memento = s.SaveMemento();
 
-            // Continue changing originator
-            s.Address = "548 S Main St. Nowhere, KS";
+    // Continue changing originator
+    s.Address = "548 S Main St. Nowhere, KS";
 
-            // Crap, gotta undo that entry, I entered the wrong address
-            s.RestoreMemento(m.Memento);
+    // Crap, gotta undo that entry, I entered the wrong address
+    s.RestoreMemento(m.Memento);
 
-            Console.ReadKey();
-        }
+    Console.ReadKey();
+}
     }
 }
