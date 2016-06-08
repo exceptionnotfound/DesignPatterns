@@ -10,11 +10,12 @@ namespace ChainOfResponsibility
     {
         static void Main(string[] args)
         {
-            //Chain of Responsibility
+            //Create the chain links
             Approver jennifer = new HeadChef();
             Approver mitchell = new PurchasingManager();
             Approver olivia = new GeneralManager();
 
+            //Create the chain
             jennifer.SetSupervisor(mitchell);
             mitchell.SetSupervisor(olivia);
 

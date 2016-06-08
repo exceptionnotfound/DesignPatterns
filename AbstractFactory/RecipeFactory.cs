@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace AbstractFactory
 {
     /// <summary>
-    /// An abstract object.
+    /// An abstract product.
     /// </summary>
     abstract class Sandwich { }
 
     /// <summary>
-    /// An abstract object.
+    /// An abstract product.
     /// </summary>
     abstract class Dessert { }
 
@@ -26,12 +26,12 @@ namespace AbstractFactory
     }
 
     /// <summary>
-    /// A concrete object
+    /// A concrete product
     /// </summary>
     class BLT : Sandwich { }
 
     /// <summary>
-    /// A concrete object
+    /// A concrete product
     /// </summary>
     class CremeBrulee : Dessert { }
 
@@ -53,12 +53,12 @@ namespace AbstractFactory
     }
 
     /// <summary>
-    /// A concrete object
+    /// A concrete product
     /// </summary>
     class GrilledCheese : Sandwich { }
 
     /// <summary>
-    /// A concrete object
+    /// A concrete product
     /// </summary>
     class IceCreamSundae : Dessert { }
 

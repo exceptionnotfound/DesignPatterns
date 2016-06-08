@@ -6,68 +6,68 @@ using System.Threading.Tasks;
 
 namespace Prototype
 {
-/// <summary>
-/// The Prototype abstract class
-/// </summary>
-abstract class SandwichPrototype
-{
-    public abstract SandwichPrototype Clone();
-}
-
-class Sandwich : SandwichPrototype
-{
-    private string Bread;
-    private string Meat;
-    private string Cheese;
-    private string Veggies;
-
-    public Sandwich(string bread, string meat, string cheese, string veggies)
+    /// <summary>
+    /// The Prototype abstract class
+    /// </summary>
+    abstract class SandwichPrototype
     {
-        Bread = bread;
-        Meat = meat;
-        Cheese = cheese;
-        Veggies = veggies;
+        public abstract SandwichPrototype Clone();
     }
 
-    public override SandwichPrototype Clone()
+    class Sandwich : SandwichPrototype
     {
-        string ingredientList = GetIngredientList();
-        Console.WriteLine("Cloning sandwich with ingredients: {0}", ingredientList.Remove(ingredientList.LastIndexOf(",")));
+        private string Bread;
+        private string Meat;
+        private string Cheese; //I will use this pun everywhere I can
+        private string Veggies;
 
-        return MemberwiseClone() as SandwichPrototype;
+        public Sandwich(string bread, string meat, string cheese, string veggies)
+        {
+            Bread = bread;
+            Meat = meat;
+            Cheese = cheese;
+            Veggies = veggies;
+        }
+
+        public override SandwichPrototype Clone()
+        {
+            string ingredientList = GetIngredientList();
+            Console.WriteLine("Cloning sandwich with ingredients: {0}", ingredientList.Remove(ingredientList.LastIndexOf(",")));
+
+            return MemberwiseClone() as SandwichPrototype;
+        }
+
+        private string GetIngredientList()
+        {
+            var ingredientList = "";
+            if (!string.IsNullOrWhiteSpace(Bread))
+            {
+                ingredientList += Bread + ", ";
+            }
+            if (!string.IsNullOrWhiteSpace(Meat))
+            {
+                ingredientList += Meat + ", ";
+            }
+            if (!string.IsNullOrWhiteSpace(Cheese))
+            {
+                ingredientList += Cheese + ", ";
+            }
+            if (!string.IsNullOrWhiteSpace(Veggies))
+            {
+                ingredientList += Veggies + ", ";
+            }
+            return ingredientList;
+        }
     }
 
-    private string GetIngredientList()
+    class SandwichMenu
     {
-        var ingredientList = "";
-        if (!string.IsNullOrWhiteSpace(Bread))
-        {
-            ingredientList += Bread + ", ";
-        }
-        if (!string.IsNullOrWhiteSpace(Meat))
-        {
-            ingredientList += Meat + ", ";
-        }
-        if (!string.IsNullOrWhiteSpace(Cheese))
-        {
-            ingredientList += Cheese + ", ";
-        }
-        if (!string.IsNullOrWhiteSpace(Veggies))
-        {
-            ingredientList += Veggies + ", ";
-        }
-        return ingredientList;
-    }
-}
+        private Dictionary<string, SandwichPrototype> _sandwiches = new Dictionary<string, SandwichPrototype>();
 
-class SandwichMenu
-{
-    private Dictionary<string, SandwichPrototype> _sandwiches = new Dictionary<string, SandwichPrototype>();
-
-    public SandwichPrototype this[string name]
-    {
-        get { return _sandwiches[name]; }
-        set { _sandwiches.Add(name, value); }
+        public SandwichPrototype this[string name]
+        {
+            get { return _sandwiches[name]; }
+            set { _sandwiches.Add(name, value); }
+        }
     }
-}
 }

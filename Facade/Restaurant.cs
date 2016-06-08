@@ -19,103 +19,103 @@ namespace Facade
         FoodItem PrepDish(int DishID);
     }
 
-/// <summary>
-/// Orders placed by Patrons.
-/// </summary>
-class Order
-{
-    public FoodItem Appetizer { get; set; }
-    public FoodItem Entree { get; set; }
-    public FoodItem Drink { get; set; }
-}
-
-/// <summary>
-/// Patron of the restaurant
-/// </summary>
-class Patron
-{
-    private string _name;
-
-    public Patron(string name)
+    /// <summary>
+    /// Orders placed by Patrons.
+    /// </summary>
+    class Order
     {
-        this._name = name;
+        public FoodItem Appetizer { get; set; }
+        public FoodItem Entree { get; set; }
+        public FoodItem Drink { get; set; }
     }
 
-    public string Name
+    /// <summary>
+    /// Patron of the restaurant
+    /// </summary>
+    class Patron
     {
-        get { return _name; }
-    }
-}
+        private string _name;
 
-
-/// <summary>
-/// A division of the kitchen.
-/// </summary>
-class ColdPrep : KitchenSection
-{
-    public FoodItem PrepDish(int dishID)
-    {
-        //Go prep the appetizer
-        return new FoodItem()
+        public Patron(string name)
         {
-            DishID = dishID
-        };
-    }
-}
+            this._name = name;
+        }
 
-/// <summary>
-/// A division of the kitchen.
-/// </summary>
-class HotPrep : KitchenSection
-{
-    public FoodItem PrepDish(int dishID)
-    {
-        //Go prep the entree
-        return new FoodItem()
+        public string Name
         {
-            DishID = dishID
-        };
+            get { return _name; }
+        }
     }
-}
 
-/// <summary>
-/// A division of the kitchen.
-/// </summary>
-class Bar : KitchenSection
-{
-    public FoodItem PrepDish(int dishID)
+
+    /// <summary>
+    /// A division of the kitchen.
+    /// </summary>
+    class ColdPrep : KitchenSection
     {
-        //Go mix the drink
-        return new FoodItem()
+        public FoodItem PrepDish(int dishID)
         {
-            DishID = dishID
-        };
+            //Go prep the appetizer
+            return new FoodItem()
+            {
+                DishID = dishID
+            };
+        }
     }
-}
 
-/// <summary>
-/// The actual "Facade" class, which hides the complexity of the KitchenSection classes.
-/// After all, there's no reason a patron should order each part of their meal individually.
-/// </summary>
-class Server
-{
-    private ColdPrep _coldPrep = new ColdPrep();
-    private Bar _bar = new Bar();
-    private HotPrep _hotPrep = new HotPrep();
-
-    public Order PlaceOrder(Patron patron, int coldAppID, int hotEntreeID, int drinkID)
+    /// <summary>
+    /// A division of the kitchen.
+    /// </summary>
+    class HotPrep : KitchenSection
     {
-        Console.WriteLine("{0} places order for cold app #" + coldAppID.ToString()
-                            + ", hot entree #" + hotEntreeID.ToString()
-                            + ", and drink #" + drinkID.ToString() + ".", patron.Name);
-
-        Order order = new Order();
-
-        order.Appetizer = _coldPrep.PrepDish(coldAppID);
-        order.Entree = _hotPrep.PrepDish(hotEntreeID);
-        order.Drink = _bar.PrepDish(drinkID);
-
-        return order;
+        public FoodItem PrepDish(int dishID)
+        {
+            //Go prep the entree
+            return new FoodItem()
+            {
+                DishID = dishID
+            };
+        }
     }
-}
+
+    /// <summary>
+    /// A division of the kitchen.
+    /// </summary>
+    class Bar : KitchenSection
+    {
+        public FoodItem PrepDish(int dishID)
+        {
+            //Go mix the drink
+            return new FoodItem()
+            {
+                DishID = dishID
+            };
+        }
+    }
+
+    /// <summary>
+    /// The actual "Facade" class, which hides the complexity of the KitchenSection classes.
+    /// After all, there's no reason a patron should order each part of their meal individually.
+    /// </summary>
+    class Server
+    {
+        private ColdPrep _coldPrep = new ColdPrep();
+        private Bar _bar = new Bar();
+        private HotPrep _hotPrep = new HotPrep();
+
+        public Order PlaceOrder(Patron patron, int coldAppID, int hotEntreeID, int drinkID)
+        {
+            Console.WriteLine("{0} places order for cold app #" + coldAppID.ToString()
+                                + ", hot entree #" + hotEntreeID.ToString()
+                                + ", and drink #" + drinkID.ToString() + ".", patron.Name);
+
+            Order order = new Order();
+
+            order.Appetizer = _coldPrep.PrepDish(coldAppID);
+            order.Entree = _hotPrep.PrepDish(hotEntreeID);
+            order.Drink = _bar.PrepDish(drinkID);
+
+            return order;
+        }
+    }
 }
