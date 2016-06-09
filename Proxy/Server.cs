@@ -6,59 +6,62 @@ using System.Threading.Tasks;
 
 namespace Proxy
 {
-/// <summary>
-/// The Subject interface which both the real subject and proxy will need to implement
-/// </summary>
-public interface IServer
-{
-    void TakeOrder(string order);
-    string DeliverOrder();
-    void ProcessPayment(string payment);
-}
-
-/// <summary>
-/// The real subject class which the Proxy can stand in for
-/// </summary>
-class Server : IServer
-{
-    private string Order;
-    public void TakeOrder(string order)
+    /// <summary>
+    /// The Subject interface which both the real subject and proxy will need to implement
+    /// </summary>
+    public interface IServer
     {
-        Console.WriteLine("Server takes order for " + order + ".");
-        Order = order;
+        void TakeOrder(string order);
+        string DeliverOrder();
+        void ProcessPayment(string payment);
     }
 
-    public string DeliverOrder()
+    /// <summary>
+    /// The real subject class which the Proxy can stand in for
+    /// </summary>
+    class Server : IServer
     {
-        return Order;
+        private string Order;
+        public void TakeOrder(string order)
+        {
+            Console.WriteLine("Server takes order for " + order + ".");
+            Order = order;
+        }
+
+        public string DeliverOrder()
+        {
+            return Order;
+        }
+
+        public void ProcessPayment(string payment)
+        {
+            Console.WriteLine("Payment for order (" + payment + ") processed.");
+        }
     }
 
-    public void ProcessPayment(string payment)
+    /// <summary>
+    /// The Proxy class, which can substitute for the Real Subject.
+    /// </summary>
+    class NewServerProxy : IServer
     {
-        Console.WriteLine("Payment for order (" + payment + ") processed.");
-    }
-}
+        private string Order;
+        private Server _server = new Server();
 
-/// <summary>
-/// The Proxy class, which can substitute for the Real Subject.
-/// </summary>
-class NewServerProxy : IServer
-{
-    private Server _server = new Server();
+        public void TakeOrder(string order)
+        {
+            Console.WriteLine("New trainee server takes order for " + order + ".");
+            Order = order;
+        }
 
-    public void TakeOrder(string order)
-    {
-        _server.TakeOrder(order);
-    }
+        public string DeliverOrder()
+        {
+            return Order;
+        }
 
-    public string DeliverOrder()
-    {
-        return _server.DeliverOrder();
+        public void ProcessPayment(string payment)
+        {
+            Console.WriteLine("New trainee cannot process payments yet!")
+            _server.ProcessPayment(payment);
+        }
     }
-
-    public void ProcessPayment(string payment)
-    {
-        _server.ProcessPayment(payment);
-    }
-}
 }
