@@ -94,11 +94,5 @@ namespace Observer
                 Console.WriteLine(_name + " wants to buy some " + veggie.GetType().Name + "!");
             }
         }
-
-        public Veggies Stock
-        {
-            get { return _veggie; }
-            set { _veggie = value; }
-        }
     }
 }
