@@ -17,9 +17,9 @@ namespace FactoryMethod
             foreach(var sandwich in sandwiches)
             {
                 Console.WriteLine("\nSandwich: " + sandwich.GetType().Name + " ");
-                foreach(var weapon in sandwich.Ingredients)
+                foreach(var ingredient in sandwich.Ingredients)
                 {
-                    Console.WriteLine("Ingredient: " + weapon.GetType().Name);
+                    Console.WriteLine("Ingredient: " + ingredient.GetType().Name);
                 }
             }
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Composite
 {
     /// <summary>
-    /// Leaf abstract class
+    /// Component abstract class
     /// </summary>
     public abstract class SoftDrink
     {
@@ -86,7 +86,7 @@ namespace Composite
     }
 
     /// <summary>
-    /// The Component class
+    /// The Client class
     /// </summary>
     public class SodaDispenser
     {

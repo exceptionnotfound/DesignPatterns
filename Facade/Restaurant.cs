@@ -55,6 +55,7 @@ namespace Facade
     {
         public FoodItem PrepDish(int dishID)
         {
+            Console.WriteLine("Cold Prep is preparing Appetizer #" + dishID);
             //Go prep the appetizer
             return new FoodItem()
             {
@@ -70,6 +71,7 @@ namespace Facade
     {
         public FoodItem PrepDish(int dishID)
         {
+            Console.WriteLine("Hot Prep is preparing Entree #" + dishID);
             //Go prep the entree
             return new FoodItem()
             {
@@ -85,6 +87,7 @@ namespace Facade
     {
         public FoodItem PrepDish(int dishID)
         {
+            Console.WriteLine("The Bar is preparing Drink #" + dishID);
             //Go mix the drink
             return new FoodItem()
             {

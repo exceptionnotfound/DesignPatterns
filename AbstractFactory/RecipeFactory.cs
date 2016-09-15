@@ -55,7 +55,7 @@ namespace AbstractFactory
     /// <summary>
     /// A concrete product
     /// </summary>
-    class GrilledCheese : Sandwich { }
+    class PBandJ : Sandwich { }
 
     /// <summary>
     /// A concrete product
@@ -69,7 +69,7 @@ namespace AbstractFactory
     {
         public override Sandwich CreateSandwich()
         {
-            return new GrilledCheese();
+            return new PBandJ();
         }
 
         public override Dessert CreateDessert()

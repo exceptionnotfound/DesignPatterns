@@ -6,316 +6,316 @@ using System.Threading.Tasks;
 
 namespace State
 {
-/// <summary>
-/// The State abstract class
-/// </summary>
-abstract class Doneness
-{
-    protected Steak steak;
-    protected double currentTemp;
-    protected double lowerTemp;
-    protected double upperTemp;
-    protected bool canEat;
-
-    public Steak Steak
+    /// <summary>
+    /// The State abstract class
+    /// </summary>
+    abstract class Doneness
     {
-        get { return steak; }
-        set { steak = value; }
-    }
+        protected Steak steak;
+        protected double currentTemp;
+        protected double lowerTemp;
+        protected double upperTemp;
+        protected bool canEat;
 
-    public double CurrentTemp
-    {
-        get { return currentTemp; }
-        set { currentTemp = value; }
-    }
-
-    public abstract void AddTemp(double temp);
-    public abstract void RemoveTemp(double temp);
-    public abstract void DonenessCheck();
-}
-
-
-/// <summary>
-/// A Concrete State class.
-/// </summary>
-class Uncooked : Doneness
-{
-    public Uncooked(Doneness state)
-    {
-        currentTemp = state.CurrentTemp;
-        steak = state.Steak;
-        Initialize();
-    }
-
-    private void Initialize()
-    {
-        lowerTemp = 0;
-        upperTemp = 130;
-        canEat = false;
-    }
-
-    public override void AddTemp(double amount)
-    {
-        currentTemp += amount;
-        DonenessCheck();
-    }
-
-    public override void RemoveTemp(double amount)
-    {
-        currentTemp -= amount;
-        DonenessCheck();
-    }
-
-    public override void DonenessCheck()
-    {
-        if (currentTemp > upperTemp)
+        public Steak Steak
         {
-            steak.State = new Rare(this);
+            get { return steak; }
+            set { steak = value; }
+        }
+
+        public double CurrentTemp
+        {
+            get { return currentTemp; }
+            set { currentTemp = value; }
+        }
+
+        public abstract void AddTemp(double temp);
+        public abstract void RemoveTemp(double temp);
+        public abstract void DonenessCheck();
+    }
+
+
+    /// <summary>
+    /// A Concrete State class.
+    /// </summary>
+    class Uncooked : Doneness
+    {
+        public Uncooked(Doneness state)
+        {
+            currentTemp = state.CurrentTemp;
+            steak = state.Steak;
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            lowerTemp = 0;
+            upperTemp = 130;
+            canEat = false;
+        }
+
+        public override void AddTemp(double amount)
+        {
+            currentTemp += amount;
+            DonenessCheck();
+        }
+
+        public override void RemoveTemp(double amount)
+        {
+            currentTemp -= amount;
+            DonenessCheck();
+        }
+
+        public override void DonenessCheck()
+        {
+            if (currentTemp > upperTemp)
+            {
+                steak.State = new Rare(this);
+            }
         }
     }
-}
 
-/// <summary>
-/// A 'ConcreteState' class.
-/// </summary>
-class Rare : Doneness
-{
-    public Rare(Doneness state) : this(state.CurrentTemp, state.Steak)
+    /// <summary>
+    /// A 'ConcreteState' class.
+    /// </summary>
+    class Rare : Doneness
     {
-    }
-
-    public Rare(double currentTemp, Steak steak)
-    {
-        this.currentTemp = currentTemp;
-        this.steak = steak;
-        Initialize();
-    }
-
-    private void Initialize()
-    {
-        lowerTemp = 130;
-        upperTemp = 139.999999999999;
-        canEat = true;
-    }
-
-    public override void AddTemp(double amount)
-    {
-        currentTemp += amount;
-        DonenessCheck();
-    }
-
-    public override void RemoveTemp(double amount)
-    {
-        currentTemp -= amount;
-        DonenessCheck();
-    }
-
-    public override void DonenessCheck()
-    {
-        if (currentTemp < lowerTemp)
+        public Rare(Doneness state) : this(state.CurrentTemp, state.Steak)
         {
-            steak.State = new Uncooked(this);
         }
-        else if (currentTemp > upperTemp)
+
+        public Rare(double currentTemp, Steak steak)
         {
-            steak.State = new MediumRare(this);
+            this.currentTemp = currentTemp;
+            this.steak = steak;
+            Initialize();
         }
-    }
-}
 
-/// <summary>
-/// A Concrete State class
-/// </summary>
-class MediumRare : Doneness
-{
-    public MediumRare(Doneness state) : this(state.CurrentTemp, state.Steak)
-    {
-    }
-
-    public MediumRare(double currentTemp, Steak steak)
-    {
-        this.currentTemp = currentTemp;
-        this.steak = steak;
-        canEat = true;
-        Initialize();
-    }
-
-    private void Initialize()
-    {
-        lowerTemp = 140;
-        upperTemp = 154.9999999999;
-    }
-
-    public override void AddTemp(double amount)
-    {
-        currentTemp += amount;
-        DonenessCheck();
-    }
-
-    public override void RemoveTemp(double amount)
-    {
-        currentTemp -= amount;
-        DonenessCheck();
-    }
-
-    public override void DonenessCheck()
-    {
-        if (currentTemp < 0.0)
+        private void Initialize()
         {
-            steak.State = new Uncooked(this);
+            lowerTemp = 130;
+            upperTemp = 139.999999999999;
+            canEat = true;
         }
-        else if (currentTemp < lowerTemp)
+
+        public override void AddTemp(double amount)
         {
-            steak.State = new Rare(this);
+            currentTemp += amount;
+            DonenessCheck();
         }
-        else if (currentTemp > upperTemp)
+
+        public override void RemoveTemp(double amount)
         {
-            steak.State = new Medium(this);
+            currentTemp -= amount;
+            DonenessCheck();
+        }
+
+        public override void DonenessCheck()
+        {
+            if (currentTemp < lowerTemp)
+            {
+                steak.State = new Uncooked(this);
+            }
+            else if (currentTemp > upperTemp)
+            {
+                steak.State = new MediumRare(this);
+            }
         }
     }
-}
 
-/// <summary>
-/// A Concrete State class
-/// </summary>
-class Medium : Doneness
-{
-    public Medium(Doneness state) : this(state.CurrentTemp, state.Steak)
+    /// <summary>
+    /// A Concrete State class
+    /// </summary>
+    class MediumRare : Doneness
     {
-    }
-
-    public Medium(double currentTemp, Steak steak)
-    {
-        this.currentTemp = currentTemp;
-        this.steak = steak;
-        canEat = true;
-        Initialize();
-    }
-
-    private void Initialize()
-    {
-        lowerTemp = 155;
-        upperTemp = 169.9999999999;
-    }
-
-    public override void AddTemp(double amount)
-    {
-        currentTemp += amount;
-        DonenessCheck();
-    }
-
-    public override void RemoveTemp(double amount)
-    {
-        currentTemp -= amount;
-        DonenessCheck();
-    }
-
-    public override void DonenessCheck()
-    {
-        if (currentTemp < 130)
+        public MediumRare(Doneness state) : this(state.CurrentTemp, state.Steak)
         {
-            steak.State = new Uncooked(this);
         }
-        else if (currentTemp < lowerTemp)
+
+        public MediumRare(double currentTemp, Steak steak)
         {
-            steak.State = new MediumRare(this);
+            this.currentTemp = currentTemp;
+            this.steak = steak;
+            canEat = true;
+            Initialize();
         }
-        else if (currentTemp > upperTemp)
+
+        private void Initialize()
         {
-            steak.State = new WellDone(this);
+            lowerTemp = 140;
+            upperTemp = 154.9999999999;
         }
-    }
-}
 
-/// <summary>
-/// A Concrete State class
-/// </summary>
-class WellDone : Doneness //aka Ruined
-{
-    public WellDone(Doneness state) : this(state.CurrentTemp, state.Steak)
-    {
-    }
-
-    public WellDone(double currentTemp, Steak steak)
-    {
-        this.currentTemp = currentTemp;
-        this.steak = steak;
-        canEat = true;
-        Initialize();
-    }
-
-    private void Initialize()
-    {
-        lowerTemp = 170;
-        upperTemp = 230;
-    }
-
-    public override void AddTemp(double amount)
-    {
-        currentTemp += amount;
-        DonenessCheck();
-    }
-
-    public override void RemoveTemp(double amount)
-    {
-        currentTemp -= amount;
-        DonenessCheck();
-    }
-
-    public override void DonenessCheck()
-    {
-        if (currentTemp < 0)
+        public override void AddTemp(double amount)
         {
-            steak.State = new Uncooked(this);
+            currentTemp += amount;
+            DonenessCheck();
         }
-        else if (currentTemp < lowerTemp)
+
+        public override void RemoveTemp(double amount)
         {
-            steak.State = new Medium(this);
+            currentTemp -= amount;
+            DonenessCheck();
+        }
+
+        public override void DonenessCheck()
+        {
+            if (currentTemp < 0.0)
+            {
+                steak.State = new Uncooked(this);
+            }
+            else if (currentTemp < lowerTemp)
+            {
+                steak.State = new Rare(this);
+            }
+            else if (currentTemp > upperTemp)
+            {
+                steak.State = new Medium(this);
+            }
         }
     }
-}
 
-/// <summary>
-/// The Context class
-/// </summary>
-class Steak
-{
-    private Doneness _state;
-    private string _beefCut;
-
-    public Steak(string beefCut)
+    /// <summary>
+    /// A Concrete State class
+    /// </summary>
+    class Medium : Doneness
     {
-        _beefCut = beefCut;
-        _state = new Rare(0.0, this);
+        public Medium(Doneness state) : this(state.CurrentTemp, state.Steak)
+        {
+        }
+
+        public Medium(double currentTemp, Steak steak)
+        {
+            this.currentTemp = currentTemp;
+            this.steak = steak;
+            canEat = true;
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            lowerTemp = 155;
+            upperTemp = 169.9999999999;
+        }
+
+        public override void AddTemp(double amount)
+        {
+            currentTemp += amount;
+            DonenessCheck();
+        }
+
+        public override void RemoveTemp(double amount)
+        {
+            currentTemp -= amount;
+            DonenessCheck();
+        }
+
+        public override void DonenessCheck()
+        {
+            if (currentTemp < 130)
+            {
+                steak.State = new Uncooked(this);
+            }
+            else if (currentTemp < lowerTemp)
+            {
+                steak.State = new MediumRare(this);
+            }
+            else if (currentTemp > upperTemp)
+            {
+                steak.State = new WellDone(this);
+            }
+        }
     }
 
-    public double CurrentTemp
+    /// <summary>
+    /// A Concrete State class
+    /// </summary>
+    class WellDone : Doneness //aka Ruined
     {
-        get { return _state.CurrentTemp; }
+        public WellDone(Doneness state) : this(state.CurrentTemp, state.Steak)
+        {
+        }
+
+        public WellDone(double currentTemp, Steak steak)
+        {
+            this.currentTemp = currentTemp;
+            this.steak = steak;
+            canEat = true;
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            lowerTemp = 170;
+            upperTemp = 230;
+        }
+
+        public override void AddTemp(double amount)
+        {
+            currentTemp += amount;
+            DonenessCheck();
+        }
+
+        public override void RemoveTemp(double amount)
+        {
+            currentTemp -= amount;
+            DonenessCheck();
+        }
+
+        public override void DonenessCheck()
+        {
+            if (currentTemp < 0)
+            {
+                steak.State = new Uncooked(this);
+            }
+            else if (currentTemp < lowerTemp)
+            {
+                steak.State = new Medium(this);
+            }
+        }
     }
 
-    public Doneness State
+    /// <summary>
+    /// The Context class
+    /// </summary>
+    class Steak
     {
-        get { return _state; }
-        set { _state = value; }
-    }
+        private Doneness _state;
+        private string _beefCut;
 
-    public void AddTemp(double amount)
-    {
-        _state.AddTemp(amount);
-        Console.WriteLine("Increased temperature by {0} degrees.", amount);
-        Console.WriteLine(" Current temp is {0}", CurrentTemp);
-        Console.WriteLine(" Status is {0}", State.GetType().Name);
-        Console.WriteLine("");
-    }
+        public Steak(string beefCut)
+        {
+            _beefCut = beefCut;
+            _state = new Rare(0.0, this);
+        }
 
-    public void RemoveTemp(double amount)
-    {
-        _state.RemoveTemp(amount);
-        Console.WriteLine("Decreased temperature by {0} degrees.", amount);
-        Console.WriteLine(" Current temp is {0}", CurrentTemp);
-        Console.WriteLine(" Status is {0}", State.GetType().Name);
-        Console.WriteLine("");
+        public double CurrentTemp
+        {
+            get { return _state.CurrentTemp; }
+        }
+
+        public Doneness State
+        {
+            get { return _state; }
+            set { _state = value; }
+        }
+
+        public void AddTemp(double amount)
+        {
+            _state.AddTemp(amount);
+            Console.WriteLine("Increased temperature by {0} degrees.", amount);
+            Console.WriteLine(" Current temp is {0}", CurrentTemp);
+            Console.WriteLine(" Status is {0}", State.GetType().Name);
+            Console.WriteLine("");
+        }
+
+        public void RemoveTemp(double amount)
+        {
+            _state.RemoveTemp(amount);
+            Console.WriteLine("Decreased temperature by {0} degrees.", amount);
+            Console.WriteLine(" Current temp is {0}", CurrentTemp);
+            Console.WriteLine(" Status is {0}", State.GetType().Name);
+            Console.WriteLine("");
+        }
     }
-}
 }
