@@ -13,18 +13,34 @@ namespace Composite
     {
         public int Calories { get; set; }
 
+        public List<SoftDrink> Flavors { get; set; }
+
         public SoftDrink(int calories)
         {
             Calories = calories;
+            Flavors = new List<SoftDrink>();
+        }
+
+        /// <summary>
+        /// "Flatten" method, returns all available flavors
+        /// </summary>
+        public void DisplayCalories()
+        {
+            var sodas = new Dictionary<string, int>();
+            foreach (var drink in this.Flavors)
+            {
+                Console.WriteLine(drink.GetType().Name + ": " + drink.Calories.ToString() + " calories.");
+                drink.DisplayCalories();
+            }
         }
     }
 
     /// <summary>
     /// Leaf class
     /// </summary>
-    public class OriginalCola : SoftDrink
+    public class VanillaCola : SoftDrink
     {
-        public OriginalCola(int calories) : base(calories) { }
+        public VanillaCola(int calories) : base(calories) { }
     }
 
     /// <summary>
@@ -38,9 +54,9 @@ namespace Composite
     /// <summary>
     /// Leaf class
     /// </summary>
-    public class OriginalRootBeer : SoftDrink
+    public class StrawberryRootBeer : SoftDrink
     {
-        public OriginalRootBeer(int calories) : base(calories) { }
+        public StrawberryRootBeer(int calories) : base(calories) { }
     }
 
     /// <summary>
@@ -54,14 +70,9 @@ namespace Composite
     /// <summary>
     /// Composite class
     /// </summary>
-    public class Colas
+    public class Cola : SoftDrink
     {
-        public List<SoftDrink> AvailableFlavors { get; set; }
-
-        public Colas()
-        {
-            AvailableFlavors = new List<SoftDrink>();
-        }
+        public Cola(int calories) : base(calories) { }
     }
 
     /// <summary>
@@ -75,54 +86,17 @@ namespace Composite
     /// <summary>
     /// Composite class
     /// </summary>
-    public class RootBeers
-    {
-        public List<SoftDrink> AvailableFlavors { get; set; }
-
-        public RootBeers()
-        {
-            AvailableFlavors = new List<SoftDrink>();
-        }
+    public class RootBeer : SoftDrink
+    { 
+        public RootBeer(int calories) : base(calories) { }
     }
 
     /// <summary>
     /// The Client class
     /// </summary>
-    public class SodaDispenser
+    public class Soda : SoftDrink
     {
-        public Colas Colas { get; set; }
-        public LemonLime LemonLime { get; set; }
-        public RootBeers RootBeers { get; set; }
 
-        public SodaDispenser()
-        {
-            Colas = new Colas();
-            LemonLime = new LemonLime(190);
-            RootBeers = new RootBeers();
-        }
-
-        /// <summary>
-        /// "Flatten" method, returns all available flavors
-        /// </summary>
-        public void DisplayCalories()
-        {
-            var sodas = new Dictionary<string, int>();
-            foreach (var cola in Colas.AvailableFlavors)
-            {
-                sodas.Add(cola.GetType().Name, cola.Calories);
-            }
-            sodas.Add(LemonLime.GetType().Name, LemonLime.Calories);
-
-            foreach (var rootbeer in RootBeers.AvailableFlavors)
-            {
-                sodas.Add(rootbeer.GetType().Name, rootbeer.Calories);
-            }
-
-            Console.WriteLine("Calories:");
-            foreach (var soda in sodas)
-            {
-                Console.WriteLine(soda.Key +": " + soda.Value.ToString() + " calories.");
-            }
-        }
+        public Soda(int calories) : base(calories) { }
     }
 }

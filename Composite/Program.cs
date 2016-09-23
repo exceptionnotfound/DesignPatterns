@@ -10,13 +10,22 @@ namespace Composite
     {
         static void Main(string[] args)
         {
-            SodaDispenser fountain = new SodaDispenser();
-            fountain.Colas.AvailableFlavors.Add(new OriginalCola(220));
-            fountain.Colas.AvailableFlavors.Add(new CherryCola(230));
-            fountain.LemonLime.Calories = 180;
-            fountain.RootBeers.AvailableFlavors.Add(new OriginalRootBeer(225));
-            fountain.RootBeers.AvailableFlavors.Add(new VanillaRootBeer(225));
-            fountain.DisplayCalories();
+            var colas = new Cola(210);
+            colas.Flavors.Add(new VanillaCola(215));
+            colas.Flavors.Add(new CherryCola(210));
+
+            var lemonLime = new LemonLime(185);
+
+            var rootBeers = new RootBeer(195);
+            rootBeers.Flavors.Add(new VanillaRootBeer(200));
+            rootBeers.Flavors.Add(new StrawberryRootBeer(200));
+
+            Soda allDrinks = new Soda(180);
+            allDrinks.Flavors.Add(colas);
+            allDrinks.Flavors.Add(lemonLime);
+            allDrinks.Flavors.Add(rootBeers);
+
+            allDrinks.DisplayCalories();
 
             Console.ReadKey();
         }

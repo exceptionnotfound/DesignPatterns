@@ -222,7 +222,7 @@ namespace State
             }
             else if (currentTemp > upperTemp)
             {
-                steak.State = new WellDone(this);
+                steak.State = new Ruined(this);
             }
         }
     }
@@ -230,13 +230,13 @@ namespace State
     /// <summary>
     /// A Concrete State class
     /// </summary>
-    class WellDone : Doneness //aka Ruined
+    class Ruined : Doneness
     {
-        public WellDone(Doneness state) : this(state.CurrentTemp, state.Steak)
+        public Ruined(Doneness state) : this(state.CurrentTemp, state.Steak)
         {
         }
 
-        public WellDone(double currentTemp, Steak steak)
+        public Ruined(double currentTemp, Steak steak)
         {
             this.currentTemp = currentTemp;
             this.steak = steak;
