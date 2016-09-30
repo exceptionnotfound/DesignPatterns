@@ -12,7 +12,7 @@ namespace Adapter
         Celsius
     }
     /// <summary>
-    /// The legacy API which must be converted to the new structure
+    /// The legacy API which must be converted to the new structure (aka the Adaptee participant)
     /// </summary>
     class MeatDatabase
     {
@@ -80,7 +80,7 @@ namespace Adapter
     }
 
     /// <summary>
-    /// The new Meat class, which represents details about a particular kind of meat.
+    /// The Target participant, which represents details about a particular kind of meat.
     /// </summary>
     class Meat
     {

@@ -7,113 +7,113 @@ using System.Threading.Tasks;
 
 namespace Iterator
 {
-/// <summary>
-/// Our collection item.  Mostly because I'm a sucker for jelly beans.
-/// </summary>
-class JellyBean
-{
-    private string _flavor;
-
-    // Constructor
-    public JellyBean(string flavor)
+    /// <summary>
+    /// Our collection item.  Mostly because I'm a sucker for jelly beans.
+    /// </summary>
+    class JellyBean
     {
-        this._flavor = flavor;
-    }
+        private string _flavor;
+
+        // Constructor
+        public JellyBean(string flavor)
+        {
+            this._flavor = flavor;
+        }
 
         
-    public string Flavor
-    {
-        get { return _flavor; }
-    }
-}
-
-/// <summary>
-/// The aggregate interface
-/// </summary>
-interface ICandyCollection
-{
-    JellyBeanIterator CreateIterator();
-}
-
-/// <summary>
-/// The concrete aggregate class
-/// </summary>
-class JellyBeanCollection : ICandyCollection
-{
-    private ArrayList _items = new ArrayList();
-
-    public JellyBeanIterator CreateIterator()
-    {
-        return new JellyBeanIterator(this);
+        public string Flavor
+        {
+            get { return _flavor; }
+        }
     }
 
-    // Gets jelly bean count
-    public int Count
+    /// <summary>
+    /// The aggregate interface
+    /// </summary>
+    interface ICandyCollection
     {
-        get { return _items.Count; }
+        JellyBeanIterator CreateIterator();
     }
 
-    // Indexer
-    public object this[int index]
+    /// <summary>
+    /// The concrete aggregate class
+    /// </summary>
+    class JellyBeanCollection : ICandyCollection
     {
-        get { return _items[index]; }
-        set { _items.Add(value); }
-    }
-}
+        private ArrayList _items = new ArrayList();
 
-/// <summary>
-/// The 'Iterator' interface
-/// </summary>
-interface IJellyBeanIterator
-{
-    JellyBean First();
-    JellyBean Next();
-    bool IsDone { get; }
-    JellyBean CurrentBean { get; }
-}
+        public JellyBeanIterator CreateIterator()
+        {
+            return new JellyBeanIterator(this);
+        }
 
-/// <summary>
-/// The 'ConcreteIterator' class
-/// </summary>
-class JellyBeanIterator : IJellyBeanIterator
-{
-    private JellyBeanCollection _jellyBeans;
-    private int _current = 0;
-    private int _step = 1;
+        // Gets jelly bean count
+        public int Count
+        {
+            get { return _items.Count; }
+        }
 
-    // Constructor
-    public JellyBeanIterator(JellyBeanCollection beans)
-    {
-        this._jellyBeans = beans;
+        // Indexer
+        public object this[int index]
+        {
+            get { return _items[index]; }
+            set { _items.Add(value); }
+        }
     }
 
-    // Gets first jelly bean
-    public JellyBean First()
+    /// <summary>
+    /// The 'Iterator' interface
+    /// </summary>
+    interface IJellyBeanIterator
     {
-        _current = 0;
-        return _jellyBeans[_current] as JellyBean;
+        JellyBean First();
+        JellyBean Next();
+        bool IsDone { get; }
+        JellyBean CurrentBean { get; }
     }
 
-    // Gets next jelly bean
-    public JellyBean Next()
+    /// <summary>
+    /// The 'ConcreteIterator' class
+    /// </summary>
+    class JellyBeanIterator : IJellyBeanIterator
     {
-        _current += _step;
-        if (!IsDone)
+        private JellyBeanCollection _jellyBeans;
+        private int _current = 0;
+        private int _step = 1;
+
+        // Constructor
+        public JellyBeanIterator(JellyBeanCollection beans)
+        {
+            this._jellyBeans = beans;
+        }
+
+        // Gets first jelly bean
+        public JellyBean First()
+        {
+            _current = 0;
             return _jellyBeans[_current] as JellyBean;
-        else
-            return null;
-    }
+        }
 
-    // Gets current iterator candy
-    public JellyBean CurrentBean
-    {
-        get { return _jellyBeans[_current] as JellyBean; }
-    }
+        // Gets next jelly bean
+        public JellyBean Next()
+        {
+            _current += _step;
+            if (!IsDone)
+                return _jellyBeans[_current] as JellyBean;
+            else
+                return null;
+        }
 
-    // Gets whether iteration is complete
-    public bool IsDone
-    {
-        get { return _current >= _jellyBeans.Count; }
+        // Gets current iterator candy
+        public JellyBean CurrentBean
+        {
+            get { return _jellyBeans[_current] as JellyBean; }
+        }
+
+        // Gets whether iteration is complete
+        public bool IsDone
+        {
+            get { return _current >= _jellyBeans.Count; }
+        }
     }
-}
 }

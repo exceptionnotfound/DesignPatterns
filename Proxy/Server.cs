@@ -60,7 +60,7 @@ namespace Proxy
 
         public void ProcessPayment(string payment)
         {
-            Console.WriteLine("New trainee cannot process payments yet!")
+            Console.WriteLine("New trainee cannot process payments yet!");
             _server.ProcessPayment(payment);
         }
     }

@@ -14,34 +14,22 @@ namespace FactoryMethod
     /// <summary>
     /// Concrete Product
     /// </summary>
-    class Bread : Ingredient
-    {
-
-    }
+    class Bread : Ingredient { }
 
     /// <summary>
     /// Concrete Product
     /// </summary>
-    class Turkey : Ingredient
-    {
-
-    }
+    class Turkey : Ingredient { }
 
     /// <summary>
     /// Concrete Product
     /// </summary>
-    class Lettuce : Ingredient
-    {
-
-    }
+    class Lettuce : Ingredient { }
 
     /// <summary>
     /// Concrete Product
     /// </summary>
-    class Mayonnaise : Ingredient
-    {
-
-    }
+    class Mayonnaise : Ingredient { }
 
 
     /// <summary>
