@@ -20,7 +20,7 @@ namespace Composite
             rootBeers.Flavors.Add(new VanillaRootBeer(200));
             rootBeers.Flavors.Add(new StrawberryRootBeer(200));
 
-            Soda sodaWater = new Soda(180);
+            SodaWater sodaWater = new SodaWater(180);
             sodaWater.Flavors.Add(colas);
             sodaWater.Flavors.Add(lemonLime);
             sodaWater.Flavors.Add(rootBeers);

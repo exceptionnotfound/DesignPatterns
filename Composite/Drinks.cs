@@ -87,16 +87,13 @@ namespace Composite
     /// Composite class
     /// </summary>
     public class RootBeer : SoftDrink
-    { 
+    {
         public RootBeer(int calories) : base(calories) { }
     }
 
-    /// <summary>
-    /// The Client class
-    /// </summary>
-    public class Soda : SoftDrink
+    public class SodaWater : SoftDrink
     {
 
-        public Soda(int calories) : base(calories) { }
+        public SodaWater(int calories) : base(calories) { }
     }
 }

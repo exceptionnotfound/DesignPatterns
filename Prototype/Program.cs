@@ -17,7 +17,7 @@ namespace Prototype
             sandwichMenu["PB&J"] = new Sandwich("White", "", "", "Peanut Butter, Jelly");
             sandwichMenu["Turkey"] = new Sandwich("Rye", "Turkey", "Swiss", "Lettuce, Onion, Tomato");
 
-            // Deli manager adds custom sandwiches
+            // Catering manager adds custom sandwiches
             sandwichMenu["LoadedBLT"] = new Sandwich("Wheat", "Turkey, Bacon", "American", "Lettuce, Tomato, Onion, Olives");
             sandwichMenu["ThreeMeatCombo"] = new Sandwich("Rye", "Turkey, Ham, Salami", "Provolone", "Lettuce, Onion");
             sandwichMenu["Vegetarian"] = new Sandwich("Wheat", "", "", "Lettuce, Onion, Tomato, Olives, Spinach");
