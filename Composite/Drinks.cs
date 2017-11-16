@@ -26,10 +26,9 @@ namespace Composite
         /// </summary>
         public void DisplayCalories()
         {
-            var sodas = new Dictionary<string, int>();
+            Console.WriteLine(this.GetType().Name + ": " + this.Calories.ToString() + " calories.");
             foreach (var drink in this.Flavors)
             {
-                Console.WriteLine(drink.GetType().Name + ": " + drink.Calories.ToString() + " calories.");
                 drink.DisplayCalories();
             }
         }
