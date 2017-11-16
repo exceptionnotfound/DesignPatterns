@@ -90,9 +90,11 @@ namespace Composite
         public RootBeer(int calories) : base(calories) { }
     }
 
+    /// <summary>
+    /// Composite class, root node
+    /// </summary>
     public class SodaWater : SoftDrink
     {
-
         public SodaWater(int calories) : base(calories) { }
     }
 }
