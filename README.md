@@ -1,6 +1,8 @@
 # DesignPatterns
 This solution contains all my example projects for my blog's [Daily Design Pattern series](https://www.exceptionnotfound.net/introducing-the-daily-design-pattern/), and is also used in my [Demonstrating Common Design Patterns with C# and Food](https://exceptionnotfound.net/speaking-engagements/) presentation. 
 
+You can also get these examples, along with updated text and examples about them, as an eBook by [signing up to be a paid subscriber](https://exceptionnotfound.net/signup/) on my blog!
+
 This series covers 22 of the Gang of Four's patterns.  Here's the individual posts:
 
 Creational Patterns:  
