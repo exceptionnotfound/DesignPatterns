@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AbstractFactory;
+using System;
 
 namespace AbstractFactory
 {
@@ -19,7 +16,7 @@ namespace AbstractFactory
             Console.WriteLine("Who are you? (A)dult or (C)hild?");
             char input = Console.ReadKey().KeyChar;
             RecipeFactory factory;
-            switch(input)
+            switch (input)
             {
                 case 'A':
                     factory = new AdultCuisineFactory();
