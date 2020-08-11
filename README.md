@@ -34,3 +34,5 @@ Behavioral Patterns:
 [Strategy](https://www.exceptionnotfound.net/strategy-the-daily-design-pattern/)  
 [Template Method](https://www.exceptionnotfound.net/the-daily-design-pattern-template-method/)  
 [Visitor](https://www.exceptionnotfound.net/visitor-the-daily-design-pattern/)  
+
+If these posts and examples helped you, please consider [buying me a coffee](https://www.buymeacoffee.com/exceptionnotfnd). Your support funds all of Exception Not Found's projects and helps keep traditional ads off the site. Thanks!
